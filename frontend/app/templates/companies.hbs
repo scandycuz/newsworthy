@@ -1,0 +1,11 @@
+<h3>Companies Index</h3>
+
+<ul>
+  {{#each model as |company|}}
+    <li>
+      {{#link-to 'company' company.slug}}
+        {{company.title}}
+      {{/link-to}}
+    </li>
+  {{/each}}
+</ul>
