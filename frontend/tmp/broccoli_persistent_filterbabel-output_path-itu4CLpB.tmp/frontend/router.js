@@ -6,7 +6,7 @@ define('frontend/router', ['exports', 'ember', 'frontend/config/environment'], f
   });
 
   Router.map(function () {
-    this.route('companies');
+    this.route('companies', { path: '/' });
     this.route('company', { path: 'companies/:company_slug' });
   });
 
