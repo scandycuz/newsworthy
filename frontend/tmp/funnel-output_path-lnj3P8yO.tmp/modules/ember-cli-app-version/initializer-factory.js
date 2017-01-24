@@ -1,0 +1,1 @@
+/home/trevor/Desktop/newsworthy/backend/frontend/tmp/funnel-input_base_path-e4e8tQ8L.tmp/initializer-factory.js

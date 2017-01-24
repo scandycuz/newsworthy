@@ -1,0 +1,1 @@
+/home/trevor/Desktop/newsworthy/frontend/tmp/funnel-input_base_path-kiaJqgI5.tmp/test-support-suffix.js
