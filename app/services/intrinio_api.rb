@@ -1,9 +1,14 @@
-
 class IntrinioAPI
 
   def initialize
     @username = "0ddde2aec78d550af66f71063d64cd97"
     @password = "485102778e05890df8149233eb7ab687"
+  end
+
+  def test_cache
+    Rails.cache.write(:test, 12, expires_in: 5.days)
+    test_amount = Rails.cache.read(:test)
+    p test_amount
   end
 
   def get_articles
@@ -21,9 +26,6 @@ class IntrinioAPI
     while api_call_count < 400
       current_page, total_pages = 1, 2
 
-      debugger
-
-
       # get next company id to query API for from server cache
       company_id = Rails.cache.read(:company_id)
       company_id = company_id > highest_id ? lowest_id : company_id
@@ -31,7 +33,7 @@ class IntrinioAPI
       # get company ticker
       ticker = Company.find(company_id).symbol
 
-      # todo: after initial articles are added to database, set up logic to only add new articles
+      # todo: after initial articles are added to database, set up logic to only add recent articles
 
       # loop through all pages of articles
       until current_page > total_pages do
@@ -45,8 +47,6 @@ class IntrinioAPI
         articles = data['data']
         current_page = data['current_page']
         total_pages = data['total_pages']
-
-        next if !articles
 
         articles.each do |article|
           params = {title: article['title'], url: article['url'], company_id: company_id}

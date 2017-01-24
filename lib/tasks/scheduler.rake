@@ -4,3 +4,10 @@ task :get_articles => :environment do
   IntrinioAPI.new.get_articles
   puts "Articles retreived"
 end
+
+desc "Temp"
+task :test_cache => :environment do
+  puts "Testing Cache"
+  IntrinioAPI.new.test_cache
+  puts "Done"
+end
