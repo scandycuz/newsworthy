@@ -1,0 +1,3 @@
+define("frontend/templates/company", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template({ "id": "oCUNLDLw", "block": "{\"statements\":[[\"block\",[\"link-to\"],[\"companies\"],null,0],[\"text\",\"\\n\\n\"],[\"open-element\",\"h3\",[]],[\"flush-element\"],[\"append\",[\"unknown\",[\"model\",\"title\"]],false],[\"close-element\"],[\"text\",\"\\n\"],[\"open-element\",\"p\",[]],[\"flush-element\"],[\"append\",[\"unknown\",[\"model\",\"rating\"]],false],[\"close-element\"],[\"text\",\"\\n\"]],\"locals\":[],\"named\":[],\"yields\":[],\"blocks\":[{\"statements\":[[\"text\",\"Back to the posts list\"]],\"locals\":[]}],\"hasPartials\":false}", "meta": { "moduleName": "frontend/templates/company.hbs" } });
+});
