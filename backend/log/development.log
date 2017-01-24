@@ -18958,3 +18958,144 @@ Processing by Api::CompaniesController#index as JSON
   [1m[35mCompany Load (6.9ms)[0m  SELECT "companies".* FROM "companies"
   Rendered api/companies/index.json.jbuilder (201.3ms)
 Completed 200 OK in 203ms (Views: 195.6ms | ActiveRecord: 6.9ms)
+
+
+Started GET "/api/companies" for 127.0.0.1 at 2017-01-23 21:55:17 -0800
+Processing by Api::CompaniesController#index as JSON
+  [1m[36mCompany Load (11.1ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered api/companies/index.json.jbuilder (242.0ms)
+Completed 200 OK in 243ms (Views: 232.2ms | ActiveRecord: 11.1ms)
+
+
+Started GET "/api/companies" for 127.0.0.1 at 2017-01-23 21:55:21 -0800
+Processing by Api::CompaniesController#index as JSON
+  [1m[35mCompany Load (5.4ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered api/companies/index.json.jbuilder (211.9ms)
+Completed 200 OK in 214ms (Views: 207.8ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/api/companies?slug=1-800-flowers-com-inc" for 127.0.0.1 at 2017-01-23 21:55:25 -0800
+Processing by Api::CompaniesController#index as JSON
+  Parameters: {"slug"=>"1-800-flowers-com-inc"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT  "companies".* FROM "companies" WHERE "companies"."slug" = $1 LIMIT 1[0m  [["slug", "1-800-flowers-com-inc"]]
+  Rendered api/companies/show.json.jbuilder (0.2ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/companies" for 127.0.0.1 at 2017-01-23 21:55:30 -0800
+Processing by Api::CompaniesController#index as JSON
+  [1m[35mCompany Load (5.5ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered api/companies/index.json.jbuilder (247.6ms)
+Completed 200 OK in 249ms (Views: 243.3ms | ActiveRecord: 5.5ms)
+
+
+Started GET "/api/companies" for 127.0.0.1 at 2017-01-23 21:56:22 -0800
+Processing by Api::CompaniesController#index as JSON
+  [1m[36mCompany Load (5.8ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered api/companies/index.json.jbuilder (240.1ms)
+Completed 200 OK in 242ms (Views: 236.3ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/api/companies?slug=1st-constitution-bancorp-nj" for 127.0.0.1 at 2017-01-23 21:56:26 -0800
+Processing by Api::CompaniesController#index as JSON
+  Parameters: {"slug"=>"1st-constitution-bancorp-nj"}
+  [1m[35mCompany Load (0.2ms)[0m  SELECT  "companies".* FROM "companies" WHERE "companies"."slug" = $1 LIMIT 1  [["slug", "1st-constitution-bancorp-nj"]]
+  Rendered api/companies/show.json.jbuilder (0.4ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/companies" for 127.0.0.1 at 2017-01-23 21:56:30 -0800
+Processing by Api::CompaniesController#index as JSON
+  [1m[36mCompany Load (8.2ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered api/companies/index.json.jbuilder (232.6ms)
+Completed 200 OK in 235ms (Views: 226.8ms | ActiveRecord: 8.2ms)
+
+
+Started GET "/api/companies?slug=acelrx-pharmaceuticals-inc" for 127.0.0.1 at 2017-01-23 21:56:34 -0800
+Processing by Api::CompaniesController#index as JSON
+  Parameters: {"slug"=>"acelrx-pharmaceuticals-inc"}
+  [1m[35mCompany Load (0.2ms)[0m  SELECT  "companies".* FROM "companies" WHERE "companies"."slug" = $1 LIMIT 1  [["slug", "acelrx-pharmaceuticals-inc"]]
+  Rendered api/companies/show.json.jbuilder (0.2ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/companies" for 127.0.0.1 at 2017-01-23 21:56:37 -0800
+Processing by Api::CompaniesController#index as JSON
+  [1m[36mCompany Load (6.1ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered api/companies/index.json.jbuilder (226.2ms)
+Completed 200 OK in 228ms (Views: 221.4ms | ActiveRecord: 6.1ms)
+
+
+Started GET "/api/companies?slug=1st-constitution-bancorp-nj" for 127.0.0.1 at 2017-01-23 21:56:40 -0800
+Processing by Api::CompaniesController#index as JSON
+  Parameters: {"slug"=>"1st-constitution-bancorp-nj"}
+  [1m[35mCompany Load (0.2ms)[0m  SELECT  "companies".* FROM "companies" WHERE "companies"."slug" = $1 LIMIT 1  [["slug", "1st-constitution-bancorp-nj"]]
+  Rendered api/companies/show.json.jbuilder (0.2ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/companies" for 127.0.0.1 at 2017-01-23 21:56:44 -0800
+Processing by Api::CompaniesController#index as JSON
+  [1m[36mCompany Load (7.4ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered api/companies/index.json.jbuilder (223.9ms)
+Completed 200 OK in 225ms (Views: 217.8ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/api/companies?slug=advanced-micro-devices-inc" for 127.0.0.1 at 2017-01-23 21:56:48 -0800
+Processing by Api::CompaniesController#index as JSON
+  Parameters: {"slug"=>"advanced-micro-devices-inc"}
+  [1m[35mCompany Load (0.2ms)[0m  SELECT  "companies".* FROM "companies" WHERE "companies"."slug" = $1 LIMIT 1  [["slug", "advanced-micro-devices-inc"]]
+  Rendered api/companies/show.json.jbuilder (0.2ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/companies" for 127.0.0.1 at 2017-01-23 21:56:58 -0800
+Processing by Api::CompaniesController#index as JSON
+  [1m[36mCompany Load (10.3ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered api/companies/index.json.jbuilder (252.6ms)
+Completed 200 OK in 254ms (Views: 243.5ms | ActiveRecord: 10.3ms)
+
+
+Started GET "/api/companies?slug=8x8-inc" for 127.0.0.1 at 2017-01-23 21:57:17 -0800
+Processing by Api::CompaniesController#index as JSON
+  Parameters: {"slug"=>"8x8-inc"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT  "companies".* FROM "companies" WHERE "companies"."slug" = $1 LIMIT 1  [["slug", "8x8-inc"]]
+  Rendered api/companies/show.json.jbuilder (0.2ms)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/api/companies" for 127.0.0.1 at 2017-01-23 21:57:19 -0800
+Processing by Api::CompaniesController#index as JSON
+  [1m[36mCompany Load (10.3ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered api/companies/index.json.jbuilder (247.7ms)
+Completed 200 OK in 249ms (Views: 238.9ms | ActiveRecord: 10.3ms)
+
+
+Started GET "/api/companies?slug=aduro-biotech-inc" for 127.0.0.1 at 2017-01-23 21:57:23 -0800
+Processing by Api::CompaniesController#index as JSON
+  Parameters: {"slug"=>"aduro-biotech-inc"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT  "companies".* FROM "companies" WHERE "companies"."slug" = $1 LIMIT 1  [["slug", "aduro-biotech-inc"]]
+  Rendered api/companies/show.json.jbuilder (0.2ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/api/companies" for 127.0.0.1 at 2017-01-23 21:57:25 -0800
+Processing by Api::CompaniesController#index as JSON
+  [1m[36mCompany Load (11.7ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered api/companies/index.json.jbuilder (247.5ms)
+Completed 200 OK in 249ms (Views: 237.3ms | ActiveRecord: 11.7ms)
+
+
+Started GET "/api/companies?slug=achillion-pharmaceuticals-inc" for 127.0.0.1 at 2017-01-23 21:58:51 -0800
+Processing by Api::CompaniesController#index as JSON
+  Parameters: {"slug"=>"achillion-pharmaceuticals-inc"}
+  [1m[35mCompany Load (0.1ms)[0m  SELECT  "companies".* FROM "companies" WHERE "companies"."slug" = $1 LIMIT 1  [["slug", "achillion-pharmaceuticals-inc"]]
+  Rendered api/companies/show.json.jbuilder (0.2ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/api/companies" for 127.0.0.1 at 2017-01-23 21:58:54 -0800
+Processing by Api::CompaniesController#index as JSON
+  [1m[36mCompany Load (5.7ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered api/companies/index.json.jbuilder (260.0ms)
+Completed 200 OK in 262ms (Views: 255.6ms | ActiveRecord: 5.7ms)
