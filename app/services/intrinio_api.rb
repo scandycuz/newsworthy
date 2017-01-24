@@ -6,9 +6,9 @@ class IntrinioAPI
   end
 
   def test_cache
-    test_num = 12
+    test_num = 10
     Rails.cache.write(:test, test_num, expires_in: 20.days)
-    while test_num < 18
+    while test_num < 20
       test_num = Rails.cache.read(:test)
       p "Current test_num is #{test_num}"
 
