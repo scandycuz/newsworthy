@@ -53,6 +53,8 @@ class IntrinioAPI
         api_call_count += 1
       end
 
+      puts "#{total_pages} pages of articles retreived for #{ticker}"
+
       # Increase the company id to search for
       Rails.cache.write(:company_id, company_id + 1, expires_in: 5.days)
     end

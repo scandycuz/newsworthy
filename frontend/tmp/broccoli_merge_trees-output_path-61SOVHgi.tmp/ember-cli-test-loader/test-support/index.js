@@ -1,1 +1,0 @@
-/home/trevor/Desktop/newsworthy/frontend/tmp/broccoli_merge_trees-input_base_path-h4zdl5dg.tmp/15/ember-cli-test-loader/test-support/index.js
