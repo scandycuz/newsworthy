@@ -19099,3 +19099,319 @@ Processing by Api::CompaniesController#index as JSON
   [1m[36mCompany Load (5.7ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
   Rendered api/companies/index.json.jbuilder (260.0ms)
 Completed 200 OK in 262ms (Views: 255.6ms | ActiveRecord: 5.7ms)
+  [1m[36mCompany Load (0.5ms)[0m  [1mSELECT  "companies".* FROM "companies"  ORDER BY "companies"."id" ASC LIMIT 1[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddSentimentAndEmotionToCompanies (20170124063108)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (1.5ms)[0m  [1mALTER TABLE "companies" RENAME COLUMN "rating" TO "sentiment"[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20170124063108"]]
+  [1m[36m (2.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (1.6ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'companies'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddEmotionToCompanies (20170124063449)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (2.2ms)[0m  [1mALTER TABLE "companies" ADD "anger" integer[0m
+  [1m[35m (0.9ms)[0m  ALTER TABLE "companies" ADD "disgust" integer
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "companies" ADD "fear" integer[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "companies" ADD "joy" integer
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "companies" ADD "sadness" integer[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20170124063449"]]
+  [1m[36m (6.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (1.6ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'companies'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddDefaultToCompanyEmotions (20170124063954)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (3.9ms)[0m  [1mALTER TABLE "companies" ALTER COLUMN "anger" TYPE integer[0m
+  [1m[35m (2.6ms)[0m  ALTER TABLE "companies" ALTER COLUMN "anger" SET DEFAULT 0
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "companies" ALTER COLUMN "disgust" TYPE integer[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "companies" ALTER COLUMN "disgust" SET DEFAULT 0
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "companies" ALTER COLUMN "fear" TYPE integer[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "companies" ALTER COLUMN "fear" SET DEFAULT 0
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "companies" ALTER COLUMN "joy" TYPE integer[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "companies" ALTER COLUMN "joy" SET DEFAULT 0
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "companies" ALTER COLUMN "sadness" TYPE integer[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "companies" ALTER COLUMN "sadness" SET DEFAULT 0
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20170124063954"]]
+  [1m[35m (3.0ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (1.5ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'companies'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[35mCompany Load (0.3ms)[0m  SELECT  "companies".* FROM "companies"  ORDER BY "companies"."id" DESC LIMIT 1
+  [1m[36mSQL (56.1ms)[0m  [1mUPDATE "companies" SET anger = 0, disgust = 0, fear = 0, joy = 0, sadness = 0[0m
+  [1m[35mCompany Load (0.3ms)[0m  SELECT  "companies".* FROM "companies"  ORDER BY "companies"."id" DESC LIMIT 1
+
+
+Started GET "/api/companies" for 127.0.0.1 at 2017-01-23 22:47:28 -0800
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Processing by Api::CompaniesController#index as JSON
+  [1m[36mCompany Load (8.0ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered api/companies/index.json.jbuilder (459.6ms)
+Completed 200 OK in 463ms (Views: 451.5ms | ActiveRecord: 9.6ms)
+
+
+Started GET "/api/companies?slug=1st-source-corporation" for 127.0.0.1 at 2017-01-23 22:47:33 -0800
+Processing by Api::CompaniesController#index as JSON
+  Parameters: {"slug"=>"1st-source-corporation"}
+  [1m[35mCompany Load (0.8ms)[0m  SELECT  "companies".* FROM "companies" WHERE "companies"."slug" = $1 LIMIT 1  [["slug", "1st-source-corporation"]]
+PG::FeatureNotSupported: ERROR:  cached plan must not change result type
+: SELECT  "companies".* FROM "companies" WHERE "companies"."slug" = $1 LIMIT 1
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT  "companies".* FROM "companies" WHERE "companies"."slug" = $1 LIMIT 1[0m  [["slug", "1st-source-corporation"]]
+  Rendered api/companies/show.json.jbuilder (0.5ms)
+Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/companies" for 127.0.0.1 at 2017-01-23 22:47:37 -0800
+Processing by Api::CompaniesController#index as JSON
+  [1m[35mCompany Load (12.3ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered api/companies/index.json.jbuilder (402.5ms)
+Completed 200 OK in 405ms (Views: 392.5ms | ActiveRecord: 12.3ms)
+
+
+Started GET "/api/companies" for 127.0.0.1 at 2017-01-23 22:47:51 -0800
+Processing by Api::CompaniesController#index as JSON
+  [1m[36mCompany Load (7.3ms)[0m  [1mSELECT "companies".* FROM "companies"[0m
+  Rendered api/companies/index.json.jbuilder (411.4ms)
+Completed 200 OK in 413ms (Views: 405.3ms | ActiveRecord: 7.3ms)
+
+
+Started GET "/api/companies" for 127.0.0.1 at 2017-01-23 22:47:54 -0800
+Processing by Api::CompaniesController#index as JSON
+  [1m[35mCompany Load (11.9ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered api/companies/index.json.jbuilder (411.1ms)
+Completed 200 OK in 412ms (Views: 400.3ms | ActiveRecord: 11.9ms)
+
+
+Started GET "/api/companies?slug=acacia-communications-inc" for 127.0.0.1 at 2017-01-23 22:48:08 -0800
+Processing by Api::CompaniesController#index as JSON
+  Parameters: {"slug"=>"acacia-communications-inc"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT  "companies".* FROM "companies" WHERE "companies"."slug" = $1 LIMIT 1[0m  [["slug", "acacia-communications-inc"]]
+  Rendered api/companies/show.json.jbuilder (0.4ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/companies" for 127.0.0.1 at 2017-01-23 22:48:15 -0800
+Processing by Api::CompaniesController#index as JSON
+  [1m[35mCompany Load (10.8ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered api/companies/index.json.jbuilder (439.1ms)
+Completed 200 OK in 441ms (Views: 430.4ms | ActiveRecord: 10.8ms)
+
+
+Started GET "/api/companies?slug=ilg-inc" for 127.0.0.1 at 2017-01-23 22:48:25 -0800
+Processing by Api::CompaniesController#index as JSON
+  Parameters: {"slug"=>"ilg-inc"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT  "companies".* FROM "companies" WHERE "companies"."slug" = $1 LIMIT 1[0m  [["slug", "ilg-inc"]]
+  Rendered api/companies/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/companies" for 127.0.0.1 at 2017-01-23 22:48:29 -0800
+Processing by Api::CompaniesController#index as JSON
+  [1m[35mCompany Load (9.5ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered api/companies/index.json.jbuilder (499.4ms)
+Completed 200 OK in 501ms (Views: 491.3ms | ActiveRecord: 9.5ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateArticles (20170124064901)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (25.0ms)[0m  [1mCREATE TABLE "articles" ("id" serial primary key, "title" character varying NOT NULL, "url" character varying NOT NULL, "sentiment" integer, "anger" integer, "disgust" integer, "fear" integer, "joy" integer, "sadness" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (3.7ms)[0m  CREATE  INDEX  "index_articles_on_title" ON "articles"  ("title")
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20170124064901"]]
+  [1m[35m (2.8ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (1.7ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'articles'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (1.5ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'companies'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (2.0ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'articles'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.9ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'companies'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36mArticle Load (0.3ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
+  [1m[35mCompany Load (1.0ms)[0m  SELECT  "companies".* FROM "companies"  ORDER BY "companies"."id" ASC LIMIT 1
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateDatapoints (20170124065620)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (6.8ms)[0m  [1mCREATE TABLE "datapoints" ("id" serial primary key, "company_id" integer NOT NULL, "article_id" integer NOT NULL, "sentiment" integer, "anger" integer, "disgust" integer, "fear" integer, "joy" integer, "sadness" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20170124065620"]]
+  [1m[36m (2.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (1.6ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'articles'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.5ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'companies'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (1.4ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'datapoints'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddIndexToDatapoints (20170124065919)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (5.2ms)[0m  [1mCREATE  INDEX  "index_datapoints_on_company_id" ON "datapoints"  ("company_id")[0m
+  [1m[35m (4.0ms)[0m  CREATE  INDEX  "index_datapoints_on_article_id" ON "datapoints"  ("article_id")
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "articles" ADD "company_id" integer[0m
+  [1m[35m (4.0ms)[0m  CREATE  INDEX  "index_articles_on_company_id" ON "articles"  ("company_id")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20170124065919"]]
+  [1m[35m (1.8ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (1.5ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'articles'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (1.4ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'companies'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.4ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'datapoints'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+
+
+Started GET "/api/companies" for 127.0.0.1 at 2017-01-23 23:03:41 -0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::CompaniesController#index as JSON
+  [1m[35mCompany Load (7.1ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered api/companies/index.json.jbuilder (508.6ms)
+Completed 200 OK in 511ms (Views: 501.6ms | ActiveRecord: 8.3ms)
+
+
+Started GET "/api/companies?slug=21vianet-group-inc" for 127.0.0.1 at 2017-01-23 23:03:45 -0800
+Processing by Api::CompaniesController#index as JSON
+  Parameters: {"slug"=>"21vianet-group-inc"}
+  [1m[36mCompany Load (0.2ms)[0m  [1mSELECT  "companies".* FROM "companies" WHERE "companies"."slug" = $1 LIMIT 1[0m  [["slug", "21vianet-group-inc"]]
+  Rendered api/companies/show.json.jbuilder (0.2ms)
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/companies" for 127.0.0.1 at 2017-01-23 23:03:56 -0800
+Processing by Api::CompaniesController#index as JSON
+  [1m[35mCompany Load (8.3ms)[0m  SELECT "companies".* FROM "companies"
+  Rendered api/companies/index.json.jbuilder (416.7ms)
+Completed 200 OK in 418ms (Views: 409.7ms | ActiveRecord: 8.3ms)
