@@ -6,15 +6,18 @@ class IntrinioAPI
   end
 
   def test_cache
-    Rails.cache.write(:test, 12, expires_in: 5.days)
-    test_amount = Rails.cache.read(:test)
-    p test_amount
+    test_num = 12
+    Rails.cache.write(:test, test_num, expires_in: 20.days)
+    while test_num < 18
+      test_num = Rails.cache.read(:test)
+      p "Current test_num is #{test_num}"
+
+      new_test_num = test_num + 1
+      Rails.cache.write(:test, new_test_num, expires_in: 20.days)
+    end
   end
 
   def get_articles
-
-    Rails.cache.write(:test, 12, expires_in: 5.days)
-    Rails.cache.read(:test)
 
     api_call_count = 1
 
@@ -64,7 +67,8 @@ class IntrinioAPI
       puts "#{total_pages} pages of articles retreived for #{ticker}"
 
       # Increase the company id to search for
-      Rails.cache.write(:company_id, company_id + 1, expires_in: 5.days)
+      new_company_id = company_id + 1
+      Rails.cache.write(:company_id, new_company_id, expires_in: 20.days)
     end
   end
 
