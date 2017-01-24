@@ -8,15 +8,19 @@ class IntrinioAPI
 
   def get_articles
 
+    Rails.cache.write(:test, 12, expires_in: 5.days)
+    Rails.cache.read(:test)
+
     api_call_count = 1
+
+    # get lowest and highest company id's to search through
+    lowest_id = Company.order(:id).first.id
+    highest_id = Company.order(:id).last.id
 
     # Daily API limit is 500
     while api_call_count < 400
       current_page, total_pages = 1, 2
 
-      # get lowest and highest company id's to search through
-      lowest_id = Company.order(:id).first.id
-      highest_id = Company.order(:id).last.id
 
       # get next company id to query API for from server cache
       company_id = Rails.cache.read(:company_id)
@@ -39,6 +43,8 @@ class IntrinioAPI
         articles = data['data']
         current_page = data['current_page']
         total_pages = data['total_pages']
+
+        next if !articles
 
         articles.each do |article|
           params = {title: article['title'], url: article['url'], company_id: company_id}
