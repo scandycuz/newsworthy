@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # root to: 'static_pages#root'
+  root to: 'layouts#application'
 
   namespace :api, defaults: {format: :json} do
     resources :companies, only: [:index, :show, :create, :update]
