@@ -6,11 +6,27 @@
 
 /* jshint ignore:end */
 
-define('frontend/adapters/application', ['exports', 'ember-data'], function (exports, _emberData) {
-  exports['default'] = _emberData['default'].RESTAdapter.extend({
+define('frontend/adapters/application', ['exports', 'ember-data', 'frontend/config/environment', 'frontend/adapters/custom-adapter'], function (exports, _emberData, _frontendConfigEnvironment, _frontendAdaptersCustomAdapter) {
+
+  var adapter = _emberData['default'].RESTAdapter.extend({
     host: 'http://localhost:3000',
     namespace: 'api'
   });
+
+  if (_frontendConfigEnvironment['default'].environment === 'production') {
+    adapter = _frontendAdaptersCustomAdapter['default'];
+  }
+
+  exports['default'] = adapter;
+});
+define('frontend/adapters/custom-adapter', ['exports', 'ember', 'ember-data'], function (exports, _ember, _emberData) {
+
+  var adapter = _emberData['default'].RESTAdapter.extend({
+    host: 'https://stocksentimentanalyzer.herokuapp.com',
+    namespace: 'api'
+  });
+
+  exports['default'] = adapter;
 });
 define('frontend/app', ['exports', 'ember', 'frontend/resolver', 'ember-load-initializers', 'frontend/config/environment'], function (exports, _ember, _frontendResolver, _emberLoadInitializers, _frontendConfigEnvironment) {
 
