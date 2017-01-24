@@ -21,6 +21,8 @@ class IntrinioAPI
     while api_call_count < 400
       current_page, total_pages = 1, 2
 
+      debugger
+
 
       # get next company id to query API for from server cache
       company_id = Rails.cache.read(:company_id)
