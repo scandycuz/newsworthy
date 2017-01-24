@@ -1,1 +1,0 @@
-/home/trevor/Desktop/newsworthy/frontend/tmp/funnel-input_base_path-L1lSClcl.tmp/index.js

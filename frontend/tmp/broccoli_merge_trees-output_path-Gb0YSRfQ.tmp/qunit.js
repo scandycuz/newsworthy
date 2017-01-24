@@ -1,0 +1,1 @@
+/home/trevor/Desktop/newsworthy/frontend/tmp/broccoli_merge_trees-input_base_path-Y1xtUn5C.tmp/0/qunit.js
