@@ -22,7 +22,7 @@ class IntrinioAPI
     api_call_count = 1
 
     # temporary, for initial rake task
-    # Rails.cache.write(:company_id, 273, expires_in: 20.days)
+    Rails.cache.write(:company_id, 417, expires_in: 20.days)
 
     # get lowest and highest company id's to search through
     lowest_id = Company.order(:id).first.id
@@ -50,14 +50,14 @@ class IntrinioAPI
         .get(request_url)
         .body
 
-        data = JSON.parse(response)
         begin
+          data = JSON.parse(response)
           articles = data['data']
           current_page = data['current_page']
           total_pages = data['total_pages']
         rescue
-          puts "Data error:"
-          p data
+          puts "Response error:"
+          p response
           puts "Skipping"
           new_company_id = company_id + 1
           Rails.cache.write(:company_id, new_company_id, expires_in: 20.days)
