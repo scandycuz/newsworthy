@@ -16,8 +16,8 @@ class AlchemyAPI
     lowest_company_id = ordered_companies.first.id
     highest_company_id = ordered_companies.last.id
 
-    # temporary, for initial rake task
-    Rails.cache.write(:company_for_articles_id, lowest_company_id, expires_in: 20.days)
+    # # temporary, for initial rake task
+    # Rails.cache.write(:company_for_articles_id, lowest_company_id, expires_in: 20.days)
 
     # Create initial article queue to analyze
     articles_analyzed = 0
@@ -43,13 +43,13 @@ class AlchemyAPI
           articles_to_analyze.push(article)
         end
 
-        if articles_to_analyze.empty?
-          puts "No articles for company"
-          next
-        end
       end
 
       article = articles_to_analyze.shift
+      if !article
+        puts "No articles for company"
+        next
+      end
       article_id = article.id
       article_title = article.title
       target_url = article.url
