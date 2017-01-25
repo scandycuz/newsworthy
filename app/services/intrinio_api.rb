@@ -10,7 +10,7 @@ class IntrinioAPI
     Rails.cache.write(:test, test_num, expires_in: 20.days)
     while test_num < 20
       test_num = Rails.cache.read(:test)
-      p "Current test_num is #{test_num}"
+      puts "Current test_num is #{test_num}"
 
       new_test_num = test_num + 1
       Rails.cache.write(:test, new_test_num, expires_in: 20.days)
@@ -50,7 +50,6 @@ class IntrinioAPI
         .body
 
         data = JSON.parse(response)
-        p data
         articles = data['data']
         current_page = data['current_page']
         total_pages = data['total_pages']
