@@ -5,9 +5,6 @@ export default Ember.Route.extend({
     return this.get('store').findAll('company');
   },
   actions: {
-    delete(company) {
-      company.deleteRecord();
-      company.save();
-    }
+    
   }
 });

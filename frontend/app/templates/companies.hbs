@@ -6,6 +6,38 @@
       {{#link-to 'company' company.slug}}
         {{company.title}}
       {{/link-to}}
+      <ul>
+        <li>{{format-values company.sentiment}}
+          <span class={{if company.changes.sentiment 'positive' 'negative'}}>
+            {{calculate-change company.prev_sentiment company.sentiment}}
+          </span>
+        </li>
+        <li>{{format-values company.anger}}
+          <span class={{if company.changes.anger 'positive' 'negative'}}>
+            {{calculate-change company.prev_anger company.anger}}
+          </span>
+        </li>
+        <li>{{format-values company.disgust}}
+          <span class={{if company.changes.disgust 'positive' 'negative'}}>
+            {{calculate-change company.prev_disgust company.disgust}}
+          </span>
+        </li>
+        <li>{{format-values company.fear}}
+          <span class={{if company.changes.fear 'positive' 'negative'}}>
+            {{calculate-change company.prev_fear company.fear}}
+          </span>
+        </li>
+        <li>{{format-values company.joy}}
+          <span class={{if company.changes.joy 'positive' 'negative'}}>
+            {{calculate-change company.prev_joy company.joy}}
+          </span>
+        </li>
+        <li>{{format-values company.sadness}}
+          <span class={{if company.changes.sadness 'positive' 'negative'}}>
+            {{calculate-change company.prev_sadness company.sadness}}
+          </span>
+        </li>
+      </ul>
     </li>
   {{/each}}
 </ul>

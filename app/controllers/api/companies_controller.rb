@@ -4,7 +4,7 @@ class Api::CompaniesController < ApplicationController
       @company = Company.find_by_slug(params[:slug])
       render :show
     else
-      @companies = Company.all
+      @companies = Company.all.order(:id)
     end
   end
 

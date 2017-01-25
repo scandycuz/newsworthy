@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170124083800) do
+ActiveRecord::Schema.define(version: 20170125032943) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,12 +19,12 @@ ActiveRecord::Schema.define(version: 20170124083800) do
   create_table "articles", force: :cascade do |t|
     t.string   "title",      null: false
     t.string   "url",        null: false
-    t.integer  "sentiment"
-    t.integer  "anger"
-    t.integer  "disgust"
-    t.integer  "fear"
-    t.integer  "joy"
-    t.integer  "sadness"
+    t.decimal  "sentiment"
+    t.decimal  "anger"
+    t.decimal  "disgust"
+    t.decimal  "fear"
+    t.decimal  "joy"
+    t.decimal  "sadness"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "company_id"
@@ -34,17 +34,23 @@ ActiveRecord::Schema.define(version: 20170124083800) do
   add_index "articles", ["title"], name: "index_articles_on_title", unique: true, using: :btree
 
   create_table "companies", force: :cascade do |t|
-    t.string   "title",                  null: false
-    t.integer  "sentiment",  default: 0, null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "title",                        null: false
+    t.decimal  "sentiment",      default: 0.0, null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.string   "slug"
     t.string   "symbol"
-    t.integer  "anger",      default: 0
-    t.integer  "disgust",    default: 0
-    t.integer  "fear",       default: 0
-    t.integer  "joy",        default: 0
-    t.integer  "sadness",    default: 0
+    t.decimal  "anger",          default: 0.0
+    t.decimal  "disgust",        default: 0.0
+    t.decimal  "fear",           default: 0.0
+    t.decimal  "joy",            default: 0.0
+    t.decimal  "sadness",        default: 0.0
+    t.decimal  "prev_sentiment", default: 0.0
+    t.decimal  "prev_anger",     default: 0.0
+    t.decimal  "prev_disgust",   default: 0.0
+    t.decimal  "prev_fear",      default: 0.0
+    t.decimal  "prev_joy",       default: 0.0
+    t.decimal  "prev_sadness",   default: 0.0
   end
 
   add_index "companies", ["slug"], name: "index_companies_on_slug", unique: true, using: :btree
@@ -54,12 +60,12 @@ ActiveRecord::Schema.define(version: 20170124083800) do
   create_table "datapoints", force: :cascade do |t|
     t.integer  "company_id", null: false
     t.integer  "article_id", null: false
-    t.integer  "sentiment"
-    t.integer  "anger"
-    t.integer  "disgust"
-    t.integer  "fear"
-    t.integer  "joy"
-    t.integer  "sadness"
+    t.decimal  "sentiment"
+    t.decimal  "anger"
+    t.decimal  "disgust"
+    t.decimal  "fear"
+    t.decimal  "joy"
+    t.decimal  "sadness"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
