@@ -50,9 +50,18 @@ class IntrinioAPI
         .body
 
         data = JSON.parse(response)
-        articles = data['data']
-        current_page = data['current_page']
-        total_pages = data['total_pages']
+        begin
+          articles = data['data']
+          current_page = data['current_page']
+          total_pages = data['total_pages']
+        rescue
+          puts "Data error:"
+          p data
+          puts "Skipping"
+          new_company_id = company_id + 1
+          Rails.cache.write(:company_id, new_company_id, expires_in: 20.days)
+          next
+        end
 
         articles.each do |article|
           params = {title: article['title'], url: article['url'], company_id: company_id}
