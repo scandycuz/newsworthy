@@ -42,12 +42,12 @@ class AlchemyAPI
         Article.where("company_id = ?", current_company_id).order(id: :desc).limit(100).each do |article|
           articles_to_analyze.push(article)
         end
-
       end
 
       article = articles_to_analyze.shift
       if !article
-        puts "No articles for company"
+        puts "No more articles for company"
+        articles_analyzed = 20
         next
       end
       article_id = article.id
