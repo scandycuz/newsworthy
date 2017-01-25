@@ -27,8 +27,7 @@ class AlchemyAPI
       articles_to_analyze.push(article)
     end
 
-    # Daily limit is 1000 calls
-    while api_call_count < 800
+    while true
 
       # If article queue empty, go to next company
       unless articles_analyzed < 20
@@ -63,6 +62,12 @@ class AlchemyAPI
       response = HTTP.get(request_url)
       .body
       data = JSON.parse(response)
+
+      # Break if API limit reached
+      if data['statusInfo'] == "daily-transaction-limit-exceeded"
+        puts "Daily Alchemy API request limit reached"
+        break
+      end
 
       if !data['docSentiment']
         # increment api call count

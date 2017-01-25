@@ -20,6 +20,8 @@ class IntrinioAPI
   def get_articles
 
     api_call_count = 1
+    # Temporary logic for initial rake task
+    Rails.cache.write(:company_id, 273, expires_in: 20.days)
 
     # get lowest and highest company id's to search through
     lowest_id = Company.order(:id).first.id
