@@ -21,11 +21,11 @@ export default DS.Model.extend({
   'fear', 'prev_fear', 'joy', 'prev_joy',
   'sadness', 'prev_sadness', function() {
     return {
-      sentiment: this.get('sentiment') > this.get('prev_sentiment')
-      anger: this.get('anger') > this.get('prev_anger')
-      disgust: this.get('disgust') > this.get('prev_disgust')
-      fear: this.get('fear') > this.get('prev_fear')
-      joy: this.get('joy') > this.get('prev_joy')
+      sentiment: this.get('sentiment') > this.get('prev_sentiment'),
+      anger: this.get('anger') > this.get('prev_anger'),
+      disgust: this.get('disgust') > this.get('prev_disgust'),
+      fear: this.get('fear') > this.get('prev_fear'),
+      joy: this.get('joy') > this.get('prev_joy'),
       sadness: this.get('sadness') > this.get('prev_sadness')
     }
   })

@@ -83,6 +83,15 @@ class AlchemyAPI
       response = HTTP.get(request_url)
       .body
 
+      if !data['docEmotions']
+        # increment article id and api call count
+        new_article_id = article_id + 1
+        Rails.cache.write(:article_id, new_article_id, expires_in: 20.days)
+        api_call_count += 1
+        company_article_count += 1
+        next
+      end
+
       data = JSON.parse(response)
       article_emotions[:anger] = data['docEmotions']['anger'].to_f.round(2)
       article_emotions[:disgust] = data['docEmotions']['disgust'].to_f.round(2)
