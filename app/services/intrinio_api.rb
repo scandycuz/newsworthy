@@ -35,6 +35,7 @@ class IntrinioAPI
       # get next company id to query API for from server cache
       company_id = Rails.cache.read(:company_id)
       company_id = company_id > highest_id ? lowest_id : company_id
+      puts "Company id is now #{company_id}"
 
       # get company ticker
       ticker = Company.find(company_id).symbol
@@ -76,11 +77,11 @@ class IntrinioAPI
         api_call_count += 1
       end
 
-      puts "#{total_pages} pages of articles retreived for #{ticker}"
-
       # Increase the company id to search for
       new_company_id = company_id + 1
       Rails.cache.write(:company_id, new_company_id, expires_in: 20.days)
+
+      puts "#{total_pages} pages of articles retreived for #{ticker}"
     end
   end
 
