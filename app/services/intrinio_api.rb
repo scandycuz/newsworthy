@@ -20,7 +20,8 @@ class IntrinioAPI
   def get_articles
 
     api_call_count = 1
-    # Temporary logic for initial rake task
+
+    # temporary, for initial rake task
     Rails.cache.write(:company_id, 273, expires_in: 20.days)
 
     # get lowest and highest company id's to search through
@@ -49,6 +50,7 @@ class IntrinioAPI
         .body
 
         data = JSON.parse(response)
+        p data
         articles = data['data']
         current_page = data['current_page']
         total_pages = data['total_pages']
