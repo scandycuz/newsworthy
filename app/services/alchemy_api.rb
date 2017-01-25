@@ -20,9 +20,10 @@ class AlchemyAPI
     Rails.cache.write(:company_for_articles_id, lowest_company_id, expires_in: 20.days)
 
     # Create initial article queue to analyze
+    articles_analyzed = 0
     articles_to_analyze = []
     current_company_id = Rails.cache.read(:company_for_articles_id)
-    Article.where("company_id = ?", current_company_id).order(id: :desc).limit(10).each do |article|
+    Article.where("company_id = ?", current_company_id).order(id: :desc).limit(100).each do |article|
       articles_to_analyze.push(article)
     end
 
@@ -30,18 +31,26 @@ class AlchemyAPI
     while api_call_count < 800
 
       # If article queue empty, go to next company
-      if articles_to_analyze.empty?
+      unless articles_analyzed < 10
+        articles_analyzed = 0
         new_company_id = current_company_id + 1
         Rails.cache.write(:company_for_articles_id, new_company_id, expires_in: 20.days)
         current_company_id = Rails.cache.read(:company_for_articles_id)
         break if current_company_id > highest_company_id
 
-        Article.where("company_id = ?", current_company_id).order(id: :desc).limit(10).each do |article|
+        articles_to_analyze = []
+        Article.where("company_id = ?", current_company_id).order(id: :desc).limit(100).each do |article|
           articles_to_analyze.push(article)
+        end
+
+        if articles_to_analyze.empty?
+          puts "No articles for company"
+          next
         end
       end
 
       article = articles_to_analyze.shift
+      article_id = article.id
       article_title = article.title
       target_url = article.url
 
@@ -53,12 +62,12 @@ class AlchemyAPI
 
       response = HTTP.get(request_url)
       .body
-
       data = JSON.parse(response)
 
       if !data['docSentiment']
         # increment api call count
-        api_call_count += 2
+        puts "No sentiment data, skipping"
+        api_call_count += 1
         next
       end
       article_emotions = {}
@@ -70,10 +79,12 @@ class AlchemyAPI
 
       response = HTTP.get(request_url)
       .body
+      data = JSON.parse(response)
 
       if !data['docEmotions']
         # increment api count
-        api_call_count += 1
+        puts "No emotion data, skipping"
+        api_call_count += 2
         next
       end
 
@@ -127,7 +138,8 @@ class AlchemyAPI
         next
       end
 
-      # increment api call count
+      # increment api call count and articles analyzed
+      articles_analyzed += 1
       api_call_count += 2
     end
   end
