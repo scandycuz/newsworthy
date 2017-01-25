@@ -31,7 +31,7 @@ class AlchemyAPI
     while api_call_count < 800
 
       # If article queue empty, go to next company
-      unless articles_analyzed < 10
+      unless articles_analyzed < 20
         articles_analyzed = 0
         new_company_id = current_company_id + 1
         Rails.cache.write(:company_for_articles_id, new_company_id, expires_in: 20.days)
@@ -117,13 +117,13 @@ class AlchemyAPI
       company = Company.find(article.company_id)
       current_datapoints = Datapoint.where("company_id = ?", company.id).count
       divisor = (current_datapoints + 1).to_f
-      divisor = divisor > 10 ? 10.0 : divisor
+      divisor = divisor > 20 ? 20.0 : divisor
 
       # compute running sentiment and emotional averages
       emotions = [:sentiment, :anger, :disgust, :fear, :joy, :sadness]
       emotions.each do |emotion|
-        # set prior emotion every 5 datapoints to track relative change
-        if current_datapoints % 5 == 1
+        # set prior emotion every 10 datapoints to track relative change
+        if current_datapoints % 10 == 1
           company[:"prev_#{emotion}"] = company[:"#{emotion}"]
         end
         current_average = company[:"#{emotion}"]
