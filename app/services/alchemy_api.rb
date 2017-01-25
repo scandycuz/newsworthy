@@ -5,52 +5,43 @@ class AlchemyAPI
   end
 
   def analyze_sentiment
-    ordered_articles = Article.order(:id)
-    lowest_id = ordered_articles.first.id
-    highest_id = ordered_articles.last.id
+    # # logic for checking all articles, currently checking only 10 most recent
+    # ordered_articles = Article.order(:id)
+    # lowest_id = ordered_articles.first.id
+    # highest_id = ordered_articles.last.id
 
     api_call_count = 0
 
-    # temporary variable to only look at 10 articles per company
-    company_article_count = 1
+    ordered_companies = Company.order(:id)
+    lowest_company_id = ordered_companies.first.id
+    highest_company_id = ordered_companies.last.id
 
     # temporary, for initial rake task
-    Rails.cache.write(:article_id, lowest_id, expires_in: 20.days)
+    Rails.cache.write(:company_for_articles_id, lowest_company_id, expires_in: 20.days)
+
+    # Create initial article queue to analyze
+    articles_to_analyze = []
+    current_company_id = Rails.cache.read(:company_for_articles_id)
+    Article.where("company_id = ?", current_company_id).order(id: :desc).limit(10).each do |article|
+      articles_to_analyze.push(article)
+    end
 
     # Daily limit is 1000 calls
     while api_call_count < 800
 
-      # end if all articles have been analyzed
-      article_id = Rails.cache.read(:article_id)
-      break if article_id > highest_id
+      # If article queue empty, go to next company
+      if articles_to_analyze.empty?
+        new_company_id = current_company_id + 1
+        Rails.cache.write(:company_for_articles_id, new_company_id, expires_in: 20.days)
+        current_company_id = Rails.cache.read(:company_for_articles_id)
+        break if current_company_id > highest_company_id
 
-      # temporary logic to only look at 10 articles per company
-      if company_article_count > 10
-        company_article_count = 1
-
-        begin
-          current_article = Article.find(article_id)
-        rescue
-          new_article_id = article_id + 1
-          Rails.cache.write(:article_id, new_article_id, expires_in: 20.days)
-          next
+        Article.where("company_id = ?", current_company_id).order(id: :desc).limit(10).each do |article|
+          articles_to_analyze.push(article)
         end
-
-        current_company = Company.find(current_article.company_id)
-        next_company_id = current_company.id + 1
-        article_id = Article.where("company_id = ?", next_company_id).order(:id).first.id
-        p "Skipping to article id #{article_id}"
       end
 
-      # get article to analyze
-      begin
-        article = Article.find(article_id)
-      rescue
-        new_article_id = article_id + 1
-        Rails.cache.write(:article_id, new_article_id, expires_in: 20.days)
-        next
-      end
-
+      article = articles_to_analyze.shift
       article_title = article.title
       target_url = article.url
 
@@ -66,11 +57,8 @@ class AlchemyAPI
       data = JSON.parse(response)
 
       if !data['docSentiment']
-        # increment article id and api call count
-        new_article_id = article_id + 1
-        Rails.cache.write(:article_id, new_article_id, expires_in: 20.days)
+        # increment api call count
         api_call_count += 2
-        company_article_count += 1
         next
       end
       article_emotions = {}
@@ -84,11 +72,8 @@ class AlchemyAPI
       .body
 
       if !data['docEmotions']
-        # increment article id and api call count
-        new_article_id = article_id + 1
-        Rails.cache.write(:article_id, new_article_id, expires_in: 20.days)
+        # increment api count
         api_call_count += 1
-        company_article_count += 1
         next
       end
 
@@ -142,11 +127,8 @@ class AlchemyAPI
         next
       end
 
-      # increment article id and api call count
-      new_article_id = article_id + 1
-      Rails.cache.write(:article_id, new_article_id, expires_in: 20.days)
+      # increment api call count
       api_call_count += 2
-      company_article_count += 1
     end
   end
 

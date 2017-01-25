@@ -1,0 +1,1 @@
+/home/trevor/Desktop/newsworthy/frontend/tmp/broccoli_merge_trees-input_base_path-MHhof1KD.tmp/2/frontend/tests/test-helper.jshint.lint-test.js
