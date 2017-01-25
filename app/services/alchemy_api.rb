@@ -69,7 +69,7 @@ class AlchemyAPI
         # increment article id and api call count
         new_article_id = article_id + 1
         Rails.cache.write(:article_id, new_article_id, expires_in: 20.days)
-        api_call_count += 1
+        api_call_count += 2
         company_article_count += 1
         next
       end
@@ -145,7 +145,7 @@ class AlchemyAPI
       # increment article id and api call count
       new_article_id = article_id + 1
       Rails.cache.write(:article_id, new_article_id, expires_in: 20.days)
-      api_call_count += 1
+      api_call_count += 2
       company_article_count += 1
     end
   end
