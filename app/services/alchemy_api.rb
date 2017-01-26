@@ -18,7 +18,7 @@ class AlchemyAPI
 
     # # temporary, for initial rake task
     # Rails.cache.write(:company_for_articles_id, lowest_company_id, expires_in: 20.days)
-    Rails.cache.write(:company_for_articles_id, 19, expires_in: 20.days)
+    Rails.cache.write(:company_for_articles_id, 42, expires_in: 20.days)
 
     # Create initial article queue to analyze
     articles_analyzed = 0
