@@ -30,7 +30,7 @@ class AlchemyAPI
 
     while true
 
-      # If article queue empty, go to next company
+      # If 20 articles analyzed, go to next company
       unless articles_analyzed < 20
         articles_analyzed = 0
         new_company_id = current_company_id + 1
@@ -49,6 +49,7 @@ class AlchemyAPI
         company = Company.find(current_company_id)
       rescue
         puts "Company with id #{current_company_id} doesn't exist, skipping"
+        articles_analyzed = 20
         next
       end
 
