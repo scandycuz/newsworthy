@@ -1,0 +1,44 @@
+// Place all the styles related to the Company controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "_variables";
+
+$light_black: #444;
+$dark_grey: #555;
+
+.company-info {
+  margin-bottom: 0.5rem;
+  border-bottom: 2px dotted #e8e8e8;
+}
+.company-name {
+  font-family: $fira_sans;
+  font-weight: 800;
+  color: $light_black;
+  a {
+    font-size: 1.3em;
+  }
+}
+.company-values {
+  font-family: $open_sans;
+  font-weight: 600;
+  font-size: 1.45em;
+  color: $dark_grey;
+  .value {
+    min-width: 3.6rem;
+  }
+  .change {
+    font-size: 0.7em;
+    margin-top: 0.35em;
+  }
+  ul {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  li {
+    display:flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}

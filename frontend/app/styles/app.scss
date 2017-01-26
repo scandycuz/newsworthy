@@ -1,0 +1,63 @@
+@import 'bourbon';
+@import "neat";
+@import "_variables";
+@import "company";
+
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,600,700|Lato:300,400,700,900|Open+Sans:400,400i,600');
+
+$green: #00b200;
+$red: #ff0033;
+
+html {
+  font-size: 16px;
+}
+html, body {
+  padding: 0;
+  margin: 0;
+}
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.container {
+  @include outer-container;
+}
+
+@for $i from 1 through 12 {
+  .span-#{$i} {
+    @include span-columns($i);
+  }
+}
+@for $i from 1 through 12 {
+  .shift-#{$i} {
+    @include shift($i);
+  }
+}
+
+.table {
+  @include reset-display;
+  @include pad();
+}
+.right {
+  float: right;
+}
+.positive {
+  color: $green;
+}
+.negative {
+  color: $red;
+}
+.pad-left {
+  padding-left: 0.32em;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
