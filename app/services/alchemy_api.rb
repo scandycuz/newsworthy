@@ -18,7 +18,7 @@ class AlchemyAPI
 
     # # temporary, for initial rake task
     # Rails.cache.write(:company_for_articles_id, lowest_company_id, expires_in: 20.days)
-    Rails.cache.write(:company_for_articles_id, 17, expires_in: 20.days)
+    Rails.cache.write(:company_for_articles_id, 19, expires_in: 20.days)
 
     # Create initial article queue to analyze
     articles_analyzed = 0
@@ -37,6 +37,14 @@ class AlchemyAPI
         Rails.cache.write(:company_for_articles_id, new_company_id, expires_in: 20.days)
         current_company_id = Rails.cache.read(:company_for_articles_id)
         break if current_company_id > highest_company_id
+
+        # skip if company with id doesn't exist
+        begin
+          company = Company.find(article.company_id)
+        rescue
+          puts "Company with id #{article.company.id} doesn't exist, skipping"
+          next
+        end
 
         articles_to_analyze = []
         Article.where("company_id = ?", current_company_id).order(id: :desc).limit(100).each do |article|
@@ -120,7 +128,6 @@ class AlchemyAPI
       end
 
       # Update Company data
-      company = Company.find(article.company_id)
       current_datapoints = Datapoint.where("company_id = ?", company.id).count
       divisor = (current_datapoints + 1).to_f
       divisor = divisor > 20 ? 20.0 : divisor
