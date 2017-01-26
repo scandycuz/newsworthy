@@ -46,9 +46,9 @@ class AlchemyAPI
 
       # skip if company with id doesn't exist
       begin
-        company = Company.find(article.company_id)
+        company = Company.find(current_company_id)
       rescue
-        puts "Company with id #{article.company.id} doesn't exist, skipping"
+        puts "Company with id #{current_company_id} doesn't exist, skipping"
         next
       end
 
