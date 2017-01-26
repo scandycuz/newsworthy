@@ -38,18 +38,18 @@ class AlchemyAPI
         current_company_id = Rails.cache.read(:company_for_articles_id)
         break if current_company_id > highest_company_id
 
-        # skip if company with id doesn't exist
-        begin
-          company = Company.find(article.company_id)
-        rescue
-          puts "Company with id #{article.company.id} doesn't exist, skipping"
-          next
-        end
-
         articles_to_analyze = []
         Article.where("company_id = ?", current_company_id).order(id: :desc).limit(100).each do |article|
           articles_to_analyze.push(article)
         end
+      end
+
+      # skip if company with id doesn't exist
+      begin
+        company = Company.find(article.company_id)
+      rescue
+        puts "Company with id #{article.company.id} doesn't exist, skipping"
+        next
       end
 
       article = articles_to_analyze.shift
