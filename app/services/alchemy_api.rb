@@ -152,6 +152,31 @@ class AlchemyAPI
         next
       end
 
+      # Update article data
+      begin
+        current_article = Article.find(article_id)
+      rescue
+        puts "Error retrieving article to update"
+        articles_analyzed += 1
+        api_call_count += 2
+        next
+      end
+
+      article_params = {
+        sentiment: article_emotions[:sentiment],
+        anger: article_emotions[:anger],
+        disgust: article_emotions[:disgust],
+        fear: article_emotions[:fear],
+        joy: article_emotions[:joy],
+        sadness: article_emotions[:sadness]
+      }
+
+      begin
+        current_article.update(article_params)
+      rescue
+        puts "Error updating article"
+      end
+
       # increment api call count and articles analyzed
       articles_analyzed += 1
       api_call_count += 2
