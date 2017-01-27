@@ -50,6 +50,11 @@ class IntrinioAPI
           articles = data['data']
           current_page = data['current_page']
           total_pages = data['total_pages']
+          if data['errors']
+            puts "Error:"
+            p data['errors'][0]['human']['message']
+            return
+          end
         rescue
           puts "Response error:"
           p response
