@@ -4,7 +4,9 @@ class Api::CompaniesController < ApplicationController
       @company = Company.find_by_slug(params[:slug])
       render :show
     else
-      @companies = Company.all.order(:id)
+      @companies = Company.where
+      .not(sentiment: 0.0, anger: 0.0, disgust: 0.0, fear: 0.0, joy: 0.0, sadness: 0.0)
+      .order(:id)
     end
   end
 
