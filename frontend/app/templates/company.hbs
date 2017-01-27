@@ -1,10 +1,121 @@
-{{#link-to 'companies'}}Back to the posts list{{/link-to}}
 
-<h3>{{model.title}}</h3>
-<h3>{{model.symbol}}</h3>
-<p>Sentiment: {{format-values model.sentiment}}</p>
-<p>Anger: {{format-values model.anger}}</p>
-<p>Disgust: {{format-values model.disgust}}</p>
-<p>Fear: {{format-values model.fear}}</p>
-<p>Joy: {{format-values model.joy}}</p>
-<p>Sadness: {{format-values model.sadness}}</p>
+<div class="company-page container">
+  <p class="back-link link">{{#link-to 'companies'}}{{fa-icon "angle-double-left"}} Back to Companies{{/link-to}}</p>
+
+  <h3>{{model.title}}</h3>
+  <h4 class="company-symbol">Nasdaq: {{model.symbol}}
+    <a class="external-link" href="http://www.marketwatch.com/investing/stock/{{model.symbol}}" target="_blank">
+      &nbsp;{{fa-icon "external-link"}}
+    </a>
+  </h4>
+  <ul class="value-list">
+    <li class="{{if company.changes.sentiment 'positive' 'negative'}}{{if company.values.sentiment 'pad-left'}}">
+      <p>
+        Sentiment
+      </p>
+      <div class="value-container">
+        <span class="value">
+          {{format-values model.sentiment}}
+        </span>
+        <span class="change">
+          {{#if model.changes.sentiment}}
+          {{fa-icon "caret-up"}}
+          {{else}}
+          {{fa-icon "caret-down"}}
+          {{/if}}
+          {{calculate-change model.prev_sentiment model.sentiment}}
+        </span>
+      </div>
+    </li>
+    <li class="{{if company.changes.anger 'positive' 'negative'}}{{if company.values.anger 'pad-left'}}">
+      <p>
+        Anger
+      </p>
+      <div class="value-container">
+        <span class="value">
+          {{format-values model.anger}}
+        </span>
+        <span class="change">
+          {{#if model.changes.anger}}
+            {{fa-icon "caret-up"}}
+          {{else}}
+            {{fa-icon "caret-down"}}
+          {{/if}}
+          {{calculate-change model.prev_anger model.anger}}
+        </span>
+      </div>
+    </li>
+    <li class="{{if company.changes.disgust 'positive' 'negative'}}{{if company.values.disgust 'pad-left'}}">
+      <p>
+        Disgust
+      </p>
+      <div class="value-container">
+        <span class="value">
+          {{format-values model.disgust}}
+        </span>
+        <span class="change">
+          {{#if model.changes.disgust}}
+            {{fa-icon "caret-up"}}
+          {{else}}
+            {{fa-icon "caret-down"}}
+          {{/if}}
+          {{calculate-change model.prev_disgust model.disgust}}
+        </span>
+      </div>
+    </li>
+    <li class="{{if company.changes.fear 'positive' 'negative'}}{{if company.values.fear 'pad-left'}}">
+      <p>
+        Fear
+      </p>
+      <div class="value-container">
+        <span class="value">
+          {{format-values model.fear}}
+        </span>
+        <span class="change">
+          {{#if model.changes.fear}}
+            {{fa-icon "caret-up"}}
+          {{else}}
+            {{fa-icon "caret-down"}}
+          {{/if}}
+          {{calculate-change model.prev_fear model.fear}}
+        </span>
+      </div>
+    </li>
+    <li class="{{if company.changes.joy 'positive' 'negative'}}{{if company.values.joy 'pad-left'}}">
+      <p>
+        Joy
+      </p>
+      <div class="value-container">
+        <span class="value">
+          {{format-values model.joy}}
+        </span>
+        <span class="change">
+          {{#if model.changes.joy}}
+            {{fa-icon "caret-up"}}
+          {{else}}
+            {{fa-icon "caret-down"}}
+          {{/if}}
+          {{calculate-change model.prev_joy model.joy}}
+        </span>
+      </div>
+    </li>
+    <li class="{{if company.changes.sadness 'positive' 'negative'}}{{if company.values.sadness 'pad-left'}}">
+      <p>
+        Sadness
+      </p>
+      <div class="value-container">
+        <span class="value">
+          {{format-values model.sadness}}
+        </span>
+        <span class="change">
+          {{#if model.changes.sadness}}
+            {{fa-icon "caret-up"}}
+          {{else}}
+            {{fa-icon "caret-down"}}
+          {{/if}}
+          {{calculate-change model.prev_sadness company.sadness}}
+        </span>
+      </div>
+    </li>
+  </ul>
+</div>

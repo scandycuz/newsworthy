@@ -14,7 +14,7 @@ html {
     bottom: 3.1rem;
     text-align: center;
     width: 100%;
-    color: #b4b4b4;
+    color: #aaa;
     text-transform: uppercase;
     font-size: 0.75em;
     padding-left: 0.32em;
@@ -26,7 +26,7 @@ html {
     bottom: 3.1rem;
     text-align: center;
     width: 100%;
-    color: #b4b4b4;
+    color: #aaa;
     text-transform: uppercase;
     font-size: 0.75em;
     padding-left: 0.32em;
@@ -38,7 +38,7 @@ html {
     bottom: 3.1rem;
     text-align: center;
     width: 100%;
-    color: #b4b4b4;
+    color: #aaa;
     text-transform: uppercase;
     font-size: 0.75em;
     padding-left: 0.32em;
@@ -50,7 +50,7 @@ html {
     bottom: 3.1rem;
     text-align: center;
     width: 100%;
-    color: #b4b4b4;
+    color: #aaa;
     text-transform: uppercase;
     font-size: 0.75em;
     padding-left: 0.32em;
@@ -62,7 +62,7 @@ html {
     bottom: 3.1rem;
     text-align: center;
     width: 100%;
-    color: #b4b4b4;
+    color: #aaa;
     text-transform: uppercase;
     font-size: 0.75em;
     padding-left: 0.32em;
@@ -74,7 +74,7 @@ html {
     bottom: 3.1rem;
     text-align: center;
     width: 100%;
-    color: #b4b4b4;
+    color: #aaa;
     text-transform: uppercase;
     font-size: 0.75em;
     padding-left: 0.32em;
@@ -118,8 +118,10 @@ html {
 
 html, body {
   padding: 0;
-  margin: 0;
-  padding-top: 2.5em; }
+  margin: 0; }
+
+body {
+  padding: 2.5em 2em 2em; }
 
 .group:after {
   content: "";

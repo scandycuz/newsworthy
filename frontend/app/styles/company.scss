@@ -6,9 +6,16 @@
 
 $light_black: #444;
 $dark_grey: #555;
-$light_grey: #b4b4b4;
+$grey: #888;
+$light_grey: #aaa;
+$blue: #0983B2;
+$dark_white: #e8e8e8;
 
 $emotions: "sentiment" "anger" "disgust" "fear" "joy" "sadness";
+
+.company-list {
+  padding-top: 4rem !important;
+}
 
 .company-info {
   margin-bottom: 0.5rem;
@@ -67,5 +74,58 @@ $emotions: "sentiment" "anger" "disgust" "fear" "joy" "sadness";
     display:flex;
     flex-direction: row;
     align-items: flex-start;
+  }
+}
+
+.company-page {
+  h3 {
+    font-size: 2.2em;
+    margin-bottom: 0.275em;
+  }
+  h4 {
+    margin-top: 0em;
+  }
+  .company-symbol {
+    font-weight: 400;
+    text-transform: uppercase;
+    color: $light_grey;
+    margin-bottom: 0.5em;
+    padding-bottom: 0.75em;
+    margin-right: 3em;
+    border-bottom: 1px solid $dark_white;
+  }
+  .back-link {
+    font-size: 1em;
+    font-style: italic;
+    opacity: 0.6;
+  }
+  i {
+    font-size: 0.8em;
+    opacity: 0.8;
+  }
+  .value-list {
+    display: flex;
+    justify-content: space-between;
+    > li {
+      width: 100%;
+    }
+    p {
+      color: $dark_grey;
+      margin-bottom: 0.75rem;
+    }
+    .value-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+    .value {
+      font-size: 2.4em;
+      font-family: $open_sans;
+      font-weight: 700;
+    }
+    .change {
+      font-family: $open_sans;
+      padding-left: 0.2rem;
+    }
   }
 }
