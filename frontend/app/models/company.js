@@ -20,12 +20,12 @@ export default DS.Model.extend({
   values: Ember.computed(
     'sentiment', 'anger', 'disgust', 'fear', 'joy', 'sadness', function() {
     return {
-      sentiment: this.get('sentiment') >= 0,
-      anger: this.get('anger') >= 0,
-      disgust: this.get('disgust') >= 0,
-      fear: this.get('fear') >= 0,
-      joy: this.get('joy') >= 0,
-      sadness: this.get('sadness') >= 0
+      sentiment: this.get('sentiment') > -0.005,
+      anger: this.get('anger') > -0.005,
+      disgust: this.get('disgust') > -0.005,
+      fear: this.get('fear') > -0.005,
+      joy: this.get('joy') > 0.005,
+      sadness: this.get('sadness') > -0.005
     };
   }),
   changes: Ember.computed('sentiment', 'prev_sentiment',

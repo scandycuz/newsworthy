@@ -6,11 +6,36 @@
 
 $light_black: #444;
 $dark_grey: #555;
+$light_grey: #b4b4b4;
+
+$emotions: "sentiment" "anger" "disgust" "fear" "joy" "sadness";
 
 .company-info {
   margin-bottom: 0.5rem;
   border-bottom: 2px dotted #e8e8e8;
+  &:first-child {
+    .company-values {
+      @for $i from 1 through 6 {
+        li:nth-child(#{$i}) {
+          &:before {
+            content: "#{nth($emotions, $i)}";
+            position: absolute;
+            bottom: 3.1rem;
+            text-align: center;
+            width: 100%;
+            color: $light_grey;
+            text-transform: uppercase;
+            font-size: 0.75em;
+            padding-left: 0.32em;
+            font-weight: 400;
+            font-family: $open_sans;
+          }
+        }
+      }
+    }
+  }
 }
+
 .company-name {
   font-family: $fira_sans;
   font-weight: 800;
@@ -24,6 +49,7 @@ $dark_grey: #555;
   font-weight: 600;
   font-size: 1.45em;
   color: $dark_grey;
+  position: relative;
   .value {
     min-width: 3.6rem;
   }
@@ -37,6 +63,7 @@ $dark_grey: #555;
     justify-content: space-between;
   }
   li {
+    position: relative;
     display:flex;
     flex-direction: row;
     align-items: flex-start;
