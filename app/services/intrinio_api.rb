@@ -5,18 +5,6 @@ class IntrinioAPI
     @password = "485102778e05890df8149233eb7ab687"
   end
 
-  def test_cache
-    test_num = 10
-    Rails.cache.write(:test, test_num, expires_in: 20.days)
-    while test_num < 20
-      test_num = Rails.cache.read(:test)
-      puts "Current test_num is #{test_num}"
-
-      new_test_num = test_num + 1
-      Rails.cache.write(:test, new_test_num, expires_in: 20.days)
-    end
-  end
-
   def get_articles
 
     api_call_count = 1
@@ -28,17 +16,24 @@ class IntrinioAPI
     lowest_id = Company.order(:id).first.id
     highest_id = Company.order(:id).last.id
 
-    # Daily API limit is 500
-    while api_call_count < 400
+    # Loop until API call limit is reached
+    while true
       current_page, total_pages = 1, 2
 
-      # get next company id to query API for from server cache
-      company_id = Rails.cache.read(:company_id)
+      # get next company id to query API for from server
+      company_id = Record.find_by("name = ?", "company_id_for_intrinio").data
       company_id = company_id > highest_id ? lowest_id : company_id
       puts "Company id is now #{company_id}"
 
       # get company ticker
-      ticker = Company.find(company_id).symbol
+      begin
+        ticker = Company.find(company_id).symbol.strip
+      rescue
+        puts "Company with that id doesn't exist, skipping"
+        new_company_id = company_id + 1
+        Record.find_by("name = ?", "company_id_for_intrinio").update(data: new_company_id)
+        next
+      end
 
       # todo: after initial articles are added to database, set up logic to only add recent articles
 
@@ -57,10 +52,10 @@ class IntrinioAPI
           total_pages = data['total_pages']
         rescue
           puts "Response error:"
-          p response.to_s
+          p response
           puts "Skipping"
           new_company_id = company_id + 1
-          Rails.cache.write(:company_id, new_company_id, expires_in: 20.days)
+          Record.find_by("name = ?", "company_id_for_intrinio").update(data: new_company_id)
           next
         end
 
@@ -79,7 +74,7 @@ class IntrinioAPI
 
       # Increase the company id to search for
       new_company_id = company_id + 1
-      Rails.cache.write(:company_id, new_company_id, expires_in: 20.days)
+      Record.find_by("name = ?", "company_id_for_intrinio").update(data: new_company_id)
 
       puts "#{total_pages} pages of articles retreived for #{ticker}"
     end

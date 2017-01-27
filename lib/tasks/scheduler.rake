@@ -11,10 +11,3 @@ task :analyze_sentiment => :environment do
   AlchemyAPI.new.analyze_sentiment
   puts "Articles analyzed"
 end
-
-desc "Temporary testing to confirm cache working in heroku"
-task :test_cache => :environment do
-  puts "Testing Cache"
-  IntrinioAPI.new.test_cache
-  puts "Done"
-end

@@ -18,12 +18,12 @@ class AlchemyAPI
 
     # # temporary, for initial rake task
     # Rails.cache.write(:company_for_articles_id, lowest_company_id, expires_in: 20.days)
-    Rails.cache.write(:company_for_articles_id, 42, expires_in: 20.days)
+    # Rails.cache.write(:company_for_articles_id, 42, expires_in: 20.days)
 
     # Create initial article queue to analyze
     articles_analyzed = 0
     articles_to_analyze = []
-    current_company_id = Rails.cache.read(:company_for_articles_id)
+    current_company_id = Record.find_by("name = ?", "company_id_for_alchemy").data
     Article.where("company_id = ?", current_company_id).order(id: :desc).limit(100).each do |article|
       articles_to_analyze.push(article)
     end
@@ -34,9 +34,9 @@ class AlchemyAPI
       unless articles_analyzed < 20
         articles_analyzed = 0
         new_company_id = current_company_id + 1
-        Rails.cache.write(:company_for_articles_id, new_company_id, expires_in: 20.days)
-        current_company_id = Rails.cache.read(:company_for_articles_id)
-        break if current_company_id > highest_company_id
+        Record.find_by("name = ?", "company_id_for_alchemy").update(data: new_company_id)
+        current_company_id = new_company_id
+        current_company_id = current_company_id > highest_company_id ? lowest_company_id : current_company_id
 
         articles_to_analyze = []
         Article.where("company_id = ?", current_company_id).order(id: :desc).limit(100).each do |article|
