@@ -9,7 +9,7 @@
     </a>
   </h4>
   <ul class="value-list">
-    <li class="{{if company.changes.sentiment 'positive' 'negative'}}{{if company.values.sentiment 'pad-left'}}">
+    <li class="{{if model.changes.sentiment 'positive' 'negative'}} {{if model.values.sentiment 'pad-left'}}">
       <p>
         Sentiment
       </p>
@@ -27,7 +27,7 @@
         </span>
       </div>
     </li>
-    <li class="{{if company.changes.anger 'positive' 'negative'}}{{if company.values.anger 'pad-left'}}">
+    <li class="{{if model.changes.anger 'positive' 'negative'}} {{if model.values.anger 'pad-left'}}">
       <p>
         Anger
       </p>
@@ -45,7 +45,7 @@
         </span>
       </div>
     </li>
-    <li class="{{if company.changes.disgust 'positive' 'negative'}}{{if company.values.disgust 'pad-left'}}">
+    <li class="{{if model.changes.disgust 'positive' 'negative'}} {{if model.values.disgust 'pad-left'}}">
       <p>
         Disgust
       </p>
@@ -63,7 +63,7 @@
         </span>
       </div>
     </li>
-    <li class="{{if company.changes.fear 'positive' 'negative'}}{{if company.values.fear 'pad-left'}}">
+    <li class="{{if model.changes.fear 'positive' 'negative'}} {{if model.values.fear 'pad-left'}}">
       <p>
         Fear
       </p>
@@ -81,7 +81,7 @@
         </span>
       </div>
     </li>
-    <li class="{{if company.changes.joy 'positive' 'negative'}}{{if company.values.joy 'pad-left'}}">
+    <li class="{{if model.changes.joy 'positive' 'negative'}} {{if model.values.joy 'pad-left'}}">
       <p>
         Joy
       </p>
@@ -99,7 +99,7 @@
         </span>
       </div>
     </li>
-    <li class="{{if company.changes.sadness 'positive' 'negative'}}{{if company.values.sadness 'pad-left'}}">
+    <li class="{{if model.changes.sadness 'positive' 'negative'}} {{if model.values.sadness 'pad-left'}}">
       <p>
         Sadness
       </p>
@@ -113,7 +113,7 @@
           {{else}}
             {{fa-icon "caret-down"}}
           {{/if}}
-          {{calculate-change model.prev_sadness company.sadness}}
+          {{calculate-change model.prev_sadness model.sadness}}
         </span>
       </div>
     </li>

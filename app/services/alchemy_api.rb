@@ -39,7 +39,7 @@ class AlchemyAPI
         current_company_id = current_company_id > highest_company_id ? lowest_company_id : current_company_id
 
         articles_to_analyze = []
-        Article.where("company_id = ?", current_company_id).order(id: :desc).limit(100).each do |article|
+        Article.where("company_id = ?", current_company_id).order(id: :asc).limit(100).each do |article|
           articles_to_analyze.push(article)
         end
       end

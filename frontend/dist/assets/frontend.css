@@ -144,7 +144,8 @@ html {
     width: 100%; }
   .company-page .value-list p {
     color: #555;
-    margin-bottom: 0.75rem; }
+    margin-top: 0.9rem;
+    margin-bottom: 0.9rem; }
   .company-page .value-list .value-container {
     display: flex;
     flex-direction: row;
