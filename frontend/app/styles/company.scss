@@ -49,6 +49,10 @@ $emotions: "sentiment" "anger" "disgust" "fear" "joy" "sadness";
   color: $light_black;
   a {
     font-size: 1.3em;
+    transition: 200ms;
+    &:hover {
+      margin-left: 0.2em;
+    }
   }
 }
 .company-values {

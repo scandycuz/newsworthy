@@ -1,4 +1,16 @@
 class Api::ArticlesController < ApplicationController
+  def index
+    if params[:company_id]
+      @articles = Article.where("company_id = ?", params[:company_id])
+    else
+      @articles = Article.all
+    end
+  end
+
+  def show
+    @article = Article.find(params[:id])
+  end
+
   def create
     @article = Article.new(article_params)
 

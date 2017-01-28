@@ -17,6 +17,7 @@ export default DS.Model.extend({
   prev_fear: DS.attr('number'),
   prev_joy: DS.attr('number'),
   prev_sadness: DS.attr('number'),
+  articles: DS.hasMany('article', { async: true }),
   values: Ember.computed(
     'sentiment', 'anger', 'disgust', 'fear', 'joy', 'sadness', function() {
     return {
