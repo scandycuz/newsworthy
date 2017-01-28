@@ -3,7 +3,7 @@
 @import "_variables";
 @import "company";
 
-@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,600,700|Lato:300,400,700,900|Open+Sans:300,400,400i,600,700');
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,600,700,800,900|Lato:300,400,700,900|Open+Sans:300,400,400i,600,700');
 
 /*
   EmojiSymbols Font (c)blockworks - Kenichi Kaneko
@@ -12,6 +12,7 @@
 
 $green: #00b200;
 $red: #ff0033;
+$very_dark_white: #d8d8d8;
 
 html {
   font-size: 16px;
@@ -20,13 +21,14 @@ html, body {
   padding: 0;
   margin: 0;
 }
-body {
-  padding: 1rem 2rem 2rem;
-}
 
-h3 {
+h1 {
   font-family: $fira_sans;
   font-weight: 800;
+}
+h3 {
+  font-family: $fira_sans;
+  font-weight: 700;
 }
 h4 {
   font-family: $fira_sans;
@@ -92,4 +94,52 @@ ul {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+#header {
+  border-bottom: 1px solid $very_dark_white;
+  background: #f8f8f8;
+  > .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .header-right {
+    text-align: right;
+    width: 75%;
+    padding-right: 2rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    p {
+      color: $med_grey;
+    }
+  }
+  .social-list {
+    display: flex;
+    justify-content: flex-start;
+    a {
+      margin-left: 0.25rem;
+      border-radius: 50%;
+      transition: 200ms;
+      width: 2em;
+      text-align: center;
+      height: 2em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $light_grey;
+      &:hover {
+        background: $dark_grey;
+        color: white;
+      }
+    }
+  }
+  h1 {
+    width: 75%;
+    font-size: 2.4em;
+    text-transform: uppercase;
+    color: $light_black;
+    margin: 1.6rem 0;
+  }
 }
