@@ -76,7 +76,6 @@ class AlchemyAPI
       if !data['docSentiment']
         # increment api call count
         puts "No sentiment data, skipping"
-        api_call_count += 1
         next
       end
       article_emotions = {}
@@ -93,7 +92,6 @@ class AlchemyAPI
       if !data['docEmotions']
         # increment api count
         puts "No emotion data, skipping"
-        api_call_count += 2
         next
       end
 
@@ -152,7 +150,6 @@ class AlchemyAPI
       rescue
         puts "Error retrieving article to update"
         articles_analyzed += 1
-        api_call_count += 2
         next
       end
 
@@ -173,7 +170,6 @@ class AlchemyAPI
 
       # increment api call count and articles analyzed
       articles_analyzed += 1
-      api_call_count += 2
     end
   end
 
