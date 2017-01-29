@@ -22,7 +22,11 @@ class IntrinioAPI
 
       # get next company id to query API for from server
       company_id = Record.find_by("name = ?", "company_id_for_intrinio").data
-      company_id = company_id > highest_id ? lowest_id : company_id
+
+      if company_id > highest_id
+        puts "Initial articles retrieved for all companies"
+        break
+      end
       puts "Company id is now #{company_id}"
 
       # get company ticker
