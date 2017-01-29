@@ -127,7 +127,7 @@ html {
 .company-articles-heading {
   display: inline-block;
   font-weight: 500;
-  border-bottom: 1px solid #c4c4c4;
+  border-bottom: 1px solid #e8e8e8;
   padding-bottom: 0.5em;
   padding-right: 0.5em;
   margin-top: 3.3rem !important;
@@ -138,7 +138,7 @@ html {
   font-size: 1em;
   margin-bottom: 2rem; }
   .company-articles li {
-    padding: 0.2rem 0; }
+    padding: 0.25rem 0; }
   .company-articles a {
     text-decoration: underline; }
     .company-articles a:hover {
@@ -147,7 +147,7 @@ html {
 .disclaimer {
   align-items: center;
   padding-top: 0.75rem;
-  padding-bottom: 1.2rem; }
+  padding-bottom: 0rem; }
   .disclaimer > div {
     display: flex !important;
     justify-content: space-between;
@@ -176,8 +176,6 @@ html {
       background: #0a91c5; }
   .disclaimer a {
     text-decoration: underline; }
-  .disclaimer .copyright {
-    color: #555; }
 
 /*
   EmojiSymbols Font (c)blockworks - Kenichi Kaneko
@@ -445,5 +443,14 @@ a {
     text-transform: uppercase;
     color: #444;
     margin: 1.6rem 0; }
+
+.copyright-container {
+  border-top: 1px solid #e8e8e8; }
+  .copyright-container a {
+    text-decoration: underline; }
+  .copyright-container p {
+    margin-top: 0; }
+  .copyright-container .copyright {
+    color: #888; }
 
 /*# sourceMappingURL=frontend.css.map */

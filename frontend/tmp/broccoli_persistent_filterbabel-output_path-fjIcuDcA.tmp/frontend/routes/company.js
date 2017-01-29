@@ -1,5 +1,5 @@
-define('frontend/routes/company', ['exports', 'ember'], function (exports, _ember) {
-  exports['default'] = _ember['default'].Route.extend({
+define('frontend/routes/company', ['exports', 'ember', 'frontend/routes/base'], function (exports, _ember, _frontendRoutesBase) {
+  exports['default'] = _frontendRoutesBase['default'].extend({
 
     model: function model(params) {
       var _this = this;

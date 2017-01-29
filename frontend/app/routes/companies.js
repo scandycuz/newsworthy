@@ -1,11 +1,11 @@
-import Ember from 'ember';
+import BaseRoute from './base';
 
-export default Ember.Route.extend({
+export default BaseRoute.extend({
   model() {
     return this.get('store').findAll('company');
   },
   actions: {
-    willTransition: function(transition) {
+    willTransition: function($) {
       $(window).off('scroll', this._windowScroll);
     }
   }

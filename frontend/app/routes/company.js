@@ -1,6 +1,6 @@
-import Ember from 'ember';
+import BaseRoute from './base';
 
-export default Ember.Route.extend({
+export default BaseRoute.extend({
 
   model: function(params) {
     // retrieve company object from Rest API

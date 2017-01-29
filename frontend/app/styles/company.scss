@@ -161,7 +161,7 @@ $emotions: "sentiment" "anger" "disgust" "fear" "joy" "sadness";
 .company-articles-heading {
   display: inline-block;
   font-weight: 500;
-  border-bottom: 1px solid #c4c4c4;
+  border-bottom: 1px solid $dark_white;
   padding-bottom: 0.5em;
   padding-right: 0.5em;
   // width: 40%;
@@ -173,7 +173,7 @@ $emotions: "sentiment" "anger" "disgust" "fear" "joy" "sadness";
   font-size: 1em;
   margin-bottom: 2rem;
   li {
-    padding: 0.2rem 0;
+    padding: 0.25rem 0;
   }
   a {
     text-decoration: underline;
@@ -184,12 +184,9 @@ $emotions: "sentiment" "anger" "disgust" "fear" "joy" "sadness";
 }
 
 .disclaimer {
-  // display: flex;
-  // flex-direction: row;
-  // justify-content: space-between;
   align-items: center;
   padding-top: 0.75rem;
-  padding-bottom: 1.2rem;
+  padding-bottom: 0rem;
   > div {
     display: flex !important;
     justify-content: space-between;
@@ -224,8 +221,5 @@ $emotions: "sentiment" "anger" "disgust" "fear" "joy" "sadness";
   }
   a {
     text-decoration: underline;
-  }
-  .copyright {
-    color: $dark_grey;
   }
 }
