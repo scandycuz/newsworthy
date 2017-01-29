@@ -1,0 +1,1 @@
+/home/trevor/Desktop/newsworthy/frontend/tmp/creator-output_path-1gHVajp5.tmp/version.js
