@@ -1,1 +1,0 @@
-/home/trevor/Desktop/newsworthy/frontend/node_modules/ember-test-helpers/lib/ember-test-helpers.js

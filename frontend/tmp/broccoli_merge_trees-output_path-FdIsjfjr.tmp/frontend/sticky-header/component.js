@@ -1,1 +1,0 @@
-/home/trevor/Desktop/newsworthy/frontend/app/sticky-header/component.js

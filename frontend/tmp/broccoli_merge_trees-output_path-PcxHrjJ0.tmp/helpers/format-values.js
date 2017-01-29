@@ -1,1 +1,0 @@
-/home/trevor/Desktop/newsworthy/frontend/app/helpers/format-values.js

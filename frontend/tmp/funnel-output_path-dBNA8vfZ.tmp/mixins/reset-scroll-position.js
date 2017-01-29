@@ -1,1 +1,0 @@
-/home/trevor/Desktop/newsworthy/frontend/tmp/funnel-input_base_path-PezEzzs8.tmp/mixins/reset-scroll-position.js
