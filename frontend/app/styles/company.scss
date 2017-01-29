@@ -69,6 +69,7 @@ $emotions: "sentiment" "anger" "disgust" "fear" "joy" "sadness";
   a {
     font-size: 1.3em;
     transition: 200ms;
+    display: inline-block;
     &:hover {
       margin-left: 0.2em;
     }
@@ -157,20 +158,50 @@ $emotions: "sentiment" "anger" "disgust" "fear" "joy" "sadness";
   }
 }
 
+.company-articles-heading {
+  display: inline-block;
+  font-weight: 500;
+  border-bottom: 1px solid #c4c4c4;
+  padding-bottom: 0.5em;
+  padding-right: 0.5em;
+  // width: 40%;
+  margin-top: 3.3rem !important;
+  margin-bottom: 0.25em;
+}
+.company-articles {
+  font-family: $open_sans;
+  font-size: 1em;
+  margin-bottom: 2rem;
+  li {
+    padding: 0.2rem 0;
+  }
+  a {
+    text-decoration: underline;
+    &:hover {
+      color: $blue;
+    }
+  }
+}
+
 .disclaimer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  // display: flex;
+  // flex-direction: row;
+  // justify-content: space-between;
   align-items: center;
-  padding-top: 0.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 1.2rem;
   > div {
     display: flex !important;
     justify-content: space-between;
     align-items: center;
   }
   .disclaimer-text {
-    width: 80%;
-    padding-right: 2em;
+    width: 90%;
+    padding-right: 4em;
+    p {
+      color: $dark_grey;
+      line-height: 1.45em;
+    }
   }
   .disclaimer-button {
     width: 30%;
@@ -190,5 +221,11 @@ $emotions: "sentiment" "anger" "disgust" "fear" "joy" "sadness";
     &:hover {
       background: lighten($blue, 4%);
     }
+  }
+  a {
+    text-decoration: underline;
+  }
+  .copyright {
+    color: $dark_grey;
   }
 }

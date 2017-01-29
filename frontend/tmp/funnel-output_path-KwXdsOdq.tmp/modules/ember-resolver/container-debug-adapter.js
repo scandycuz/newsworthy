@@ -1,0 +1,1 @@
+/home/trevor/Desktop/newsworthy/frontend/tmp/funnel-input_base_path-0rnPU3gi.tmp/container-debug-adapter.js

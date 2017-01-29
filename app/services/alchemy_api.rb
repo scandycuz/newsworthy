@@ -5,41 +5,33 @@ class AlchemyAPI
   end
 
   def analyze_sentiment
-    # # logic for checking all articles, currently checking only 10 most recent
-    # ordered_articles = Article.order(:id)
-    # lowest_id = ordered_articles.first.id
-    # highest_id = ordered_articles.last.id
-
-    api_call_count = 0
-
     ordered_companies = Company.order(:id)
     lowest_company_id = ordered_companies.first.id
     highest_company_id = ordered_companies.last.id
 
-    # # temporary, for initial rake task
-    # Rails.cache.write(:company_for_articles_id, lowest_company_id, expires_in: 20.days)
-    # Rails.cache.write(:company_for_articles_id, 42, expires_in: 20.days)
-
-    # Create initial article queue to analyze
+    # Create initial article stack to analyze
     articles_analyzed = 0
     articles_to_analyze = []
     current_company_id = Record.find_by("name = ?", "company_id_for_alchemy").data
-    Article.where("company_id = ?", current_company_id).order(id: :desc).limit(100).each do |article|
+    Article.where("company_id = ?", current_company_id).order(id: :asc).limit(20).each do |article|
       articles_to_analyze.push(article)
     end
 
     while true
 
+      # Todo: after initial articles analyzed, analyze just recent articles
+
       # If 20 articles analyzed, go to next company
-      unless articles_analyzed < 20
+      if articles_analyzed >= 20
         articles_analyzed = 0
         new_company_id = current_company_id + 1
         Record.find_by("name = ?", "company_id_for_alchemy").update(data: new_company_id)
         current_company_id = new_company_id
         current_company_id = current_company_id > highest_company_id ? lowest_company_id : current_company_id
 
+        # create a stack of up to 20 articles
         articles_to_analyze = []
-        Article.where("company_id = ?", current_company_id).order(id: :asc).limit(100).each do |article|
+        Article.where("company_id = ?", current_company_id).order(id: :asc).limit(20).each do |article|
           articles_to_analyze.push(article)
         end
       end
@@ -53,12 +45,14 @@ class AlchemyAPI
         next
       end
 
-      article = articles_to_analyze.shift
+      # Start with oldest of the stack of 20 articles
+      article = articles_to_analyze.pop
       if !article
-        puts "No more articles for company"
+        puts "Article stack empty, #{articles_analyzed} / 20 articles analyzed for #{company}"
         articles_analyzed = 20
         next
       end
+
       article_id = article.id
       article_title = article.title
       target_url = article.url

@@ -6,6 +6,24 @@
   </div>
 </div>
 
+{{#sticky-header}}
+<div class="container group company-header sticky-hidden">
+  <div class="title-header span-3">
+    <p>&nbsp;</p>
+  </div>
+  <div class="span-9">
+    <ul class="column-names">
+      <li>Sentiment</li>
+      <li>Anger</li>
+      <li>Disgust</li>
+      <li>Fear</li>
+      <li>Joy</li>
+      <li>Sadness</li>
+    </ul>
+  </div>
+</div>
+{{/sticky-header}}
+
 <div class="container group company-header">
   <div class="title-header span-3">
     <p>&nbsp;</p>
@@ -117,18 +135,23 @@
     {{/each}}
   </ul>
 
-  <div class="disclaimer">
-    <div class="disclaimer-text">
+  <div class="disclaimer group">
+    <div class="span-10">
       <p>
-        <strong>Notice:</strong> StockSentiment should not be used as an investment tool, and is only for entertainment/informational purposes. Also, due to API cost limitations, not all of the data is current, as it is only possible to analyze recent articles for a handful of companies per day. If you would like to help increase the daily API limit, please don't hesitate to donate. All funds will go towards increasing the amount of companies that are be analyzed each day.
+        <strong>Notice:</strong> StockSentiment should not be used as an investment tool, and is only for entertainment/informational purposes. Also, due to API cost constraints, not all of the data is current, as it is only possible to analyze recent articles for a handful of companies per day. If you have any questions comments or suggestions, don't hesitate to <a href="mailto:trevorscandalios@gmail.com" target="_top">contact me</a>!
       </p>
     </div>
-    <div class="disclaimer-button">
+    <div class="span-12">
+      <p class="copyright">
+        &copy; 2017 Trevor Scandalios
+      </p>
+    </div>
+    <!-- <div class="disclaimer-button">
       <a class="donate-button"
       href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=EZG9VXKE4XBQA"
       target="_blank">
         Donate
       </a>
-    </div>
+    </div> -->
   </div>
 </div>

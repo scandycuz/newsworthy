@@ -36,6 +36,15 @@ define('frontend/tests/controllers/article.jshint.lint-test', ['exports'], funct
     assert.ok(true, 'controllers/article.js should pass jshint.');
   });
 });
+define('frontend/tests/controllers/companies.jshint.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint | controllers/companies.js');
+  QUnit.test('should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'controllers/companies.js should pass jshint.');
+  });
+});
 define('frontend/tests/controllers/company.jshint.lint-test', ['exports'], function (exports) {
   'use strict';
 
@@ -242,6 +251,15 @@ define('frontend/tests/routes/company.jshint.lint-test', ['exports'], function (
     assert.ok(true, 'routes/company.js should pass jshint.');
   });
 });
+define('frontend/tests/sticky-header/component.jshint.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint | sticky-header/component.js');
+  QUnit.test('should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(false, 'sticky-header/component.js should pass jshint.\nsticky-header/component.js: line 2, col 17, \'computed\' is defined but never used.\n\n1 error');
+  });
+});
 define('frontend/tests/test-helper', ['exports', 'frontend/tests/helpers/resolver', 'ember-qunit'], function (exports, _frontendTestsHelpersResolver, _emberQunit) {
 
   (0, _emberQunit.setResolver)(_frontendTestsHelpersResolver['default']);
@@ -297,6 +315,28 @@ define('frontend/tests/unit/controllers/article-test.jshint.lint-test', ['export
   QUnit.test('should pass jshint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'unit/controllers/article-test.js should pass jshint.');
+  });
+});
+define('frontend/tests/unit/controllers/companies-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleFor)('controller:companies', 'Unit | Controller | companies', {
+    // Specify the other units that are required for this test.
+    // needs: ['controller:foo']
+  });
+
+  // Replace this with your real tests.
+  (0, _emberQunit.test)('it exists', function (assert) {
+    var controller = this.subject();
+    assert.ok(controller);
+  });
+});
+define('frontend/tests/unit/controllers/companies-test.jshint.lint-test', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint | unit/controllers/companies-test.js');
+  QUnit.test('should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/controllers/companies-test.js should pass jshint.');
   });
 });
 define('frontend/tests/unit/controllers/company-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {

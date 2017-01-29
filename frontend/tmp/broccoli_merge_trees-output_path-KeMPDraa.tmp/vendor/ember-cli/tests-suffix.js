@@ -1,0 +1,1 @@
+/home/trevor/Desktop/newsworthy/frontend/tmp/config_replace-output_path-u0IDJiXA.tmp/tests-suffix.js

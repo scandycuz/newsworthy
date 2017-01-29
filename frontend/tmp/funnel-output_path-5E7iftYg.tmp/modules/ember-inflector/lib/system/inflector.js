@@ -1,0 +1,1 @@
+/home/trevor/Desktop/newsworthy/frontend/tmp/funnel-input_base_path-5Im1b6qt.tmp/lib/system/inflector.js

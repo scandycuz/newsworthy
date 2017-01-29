@@ -2,7 +2,6 @@ class Api::CompaniesController < ApplicationController
   def index
     if params[:slug]
       @company = Company.includes(:articles).find_by_slug(params[:slug])
-      @articles = @company.articles
       render :show
     else
       @companies = Company

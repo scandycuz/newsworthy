@@ -3,7 +3,7 @@
 @import "_variables";
 @import "company";
 
-@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,600,700,800,900|Lato:300,400,700,900|Open+Sans:300,400,400i,600,700');
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,500.600,700,800,900|Lato:300,400,700,900|Open+Sans:300,400,400i,600,700');
 
 /*
   EmojiSymbols Font (c)blockworks - Kenichi Kaneko
@@ -94,6 +94,36 @@ ul {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+.sticky-hidden {
+  display: none;
+}
+.is-sticky {
+  .sticky-hidden {
+    display: block;
+  }
+}
+
+.sticky-header-container {
+  width: 100%;
+}
+.sticky-header-container {
+  .sticky-header {
+    background: white;
+    z-index: 1000000;
+    width: 100%;
+    border: 1px solid transparent;
+    transition: border 200ms;
+  }
+}
+.sticky-header-container.is-sticky {
+  .sticky-header {
+    position: fixed;
+    top: 0;
+    padding: 1em 0 0.8em !important;
+    border-bottom: 1px solid $dark_white;
+  }
 }
 
 #header {
