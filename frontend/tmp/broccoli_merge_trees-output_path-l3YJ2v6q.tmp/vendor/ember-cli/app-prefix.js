@@ -1,0 +1,1 @@
+/home/trevor/Desktop/newsworthy/frontend/tmp/config_replace-output_path-Op9pKHU9.tmp/app-prefix.js

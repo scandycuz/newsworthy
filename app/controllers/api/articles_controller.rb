@@ -1,7 +1,7 @@
 class Api::ArticlesController < ApplicationController
   def index
     if params[:company_id]
-      @articles = Article.where("company_id = ?", params[:company_id]).order(id: :asc).limit(20);
+      @articles = Article.where("company_id = ?", params[:company_id])
     else
       @articles = Article.all
     end

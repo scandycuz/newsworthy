@@ -1,0 +1,3 @@
+define("frontend/templates/articles", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template({ "id": "FxmDZ8s/", "block": "{\"statements\":[[\"block\",[\"each\"],[[\"get\",[\"model\"]]],null,0]],\"locals\":[],\"named\":[],\"yields\":[],\"blocks\":[{\"statements\":[[\"text\",\"  \"],[\"append\",[\"unknown\",[\"article\",\"url\"]],false],[\"text\",\"\\n\"]],\"locals\":[\"article\"]}],\"hasPartials\":false}", "meta": { "moduleName": "frontend/templates/articles.hbs" } });
+});

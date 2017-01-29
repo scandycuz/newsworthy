@@ -1,0 +1,1 @@
+{"modulePrefix":"frontend","environment":"development","rootURL":"/","locationType":"auto","newRelic":{"licenseKey":"296fa6db55f5f267231969095a6ae16e4601d324"},"EmberENV":{"FEATURES":{},"EXTEND_PROTOTYPES":{"Date":false}},"APP":{"name":"frontend","version":"0.0.0+7ee03867"},"exportApplicationGlobal":true}

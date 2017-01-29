@@ -1,0 +1,1 @@
+/home/trevor/Desktop/newsworthy/frontend/tmp/funnel-input_base_path-4Ioi08a2.tmp/instance-initializers/new-relic.js

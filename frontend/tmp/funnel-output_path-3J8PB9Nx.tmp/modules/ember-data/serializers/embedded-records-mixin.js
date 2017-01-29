@@ -1,0 +1,1 @@
+/home/trevor/Desktop/newsworthy/frontend/tmp/funnel-input_base_path-SGpYkRSE.tmp/serializers/embedded-records-mixin.js
