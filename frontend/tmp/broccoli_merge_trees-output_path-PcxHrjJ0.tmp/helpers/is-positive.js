@@ -1,0 +1,1 @@
+/home/trevor/Desktop/newsworthy/frontend/app/helpers/is-positive.js

@@ -1,0 +1,1 @@
+/home/trevor/Desktop/newsworthy/frontend/tmp/funnel-input_base_path-IdK9urcJ.tmp/lib/helpers/pluralize.js
