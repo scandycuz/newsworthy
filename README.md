@@ -34,7 +34,7 @@ If you'd like to take a closer look at the code behind Stock Sentiment, the best
 * EmberJS
 * Ruby on Rails
 * PostgreSQL
-* Ember CLI Addons
+* Ember Addons
   * ember-font-awesome
   * ember-cli-bourbon
   * ember-cli-neat
@@ -44,7 +44,7 @@ If you'd like to take a closer look at the code behind Stock Sentiment, the best
 
 ## Future Implementations
 
-There are a number of features that I would like to add to the application in the future:
+There are a number of features that I would like to add to the application:
 
 * Search feature to locate specific stocks
 * Pagination with a load on scroll feature to improve initial load time
