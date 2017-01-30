@@ -1,61 +1,39 @@
 # Stock Sentiment
 
-Stock Sentiment is app designed to keep track of the current sentiment and emotional reaction to companies listed on NASDAQ. It uses the [Intrinio]
-
-New York Thyme's Cookbook is a clone of [New York Times Cooking](http://www.cooking.nytimes.com) created by William McMeans. It features recipes that users can save to their recipe box, rate, comment on, and more. Take a look at it live at [http://www.thymes-cookbook.com](http://www.thymes-cookbook.com) — you can log in on an already registered account with one click using the demo button.
+Stock Sentiment is application designed to keep track of the current sentiment and emotional reaction to companies listed on NASDAQ. It uses the [Intrinio](https://intrinio.com/) News API to pull recent news articles about each company, and IBM's [Watson Alchemy API](http://www.alchemyapi.com/) to analyze the sentiment and emotion in the articles. The application then records a running average of those values for each company and also tracks recent changes.
 
 [Live Here][live]
 
-[live]: http://www.thymes-cookbook.com
+[live]: http://www.stocksentiment.info/
 
 ## Features
 
-* Authentication
-  * Session is authenticated in the backend. All queries return data that corresponds to the proper user.
-  * User can log in from any page in the app. Clicking on a link to save a recipe, access recipe box, etc. prompt the user for log in (as on the original app).
-* Save recipes
-* Mark recipes as cooked
-* Comment on recipes
-* Find recipes by tag
-* Look at recipe boxes of other users
+* Daily rake tasks connect to the Intrinio and Alchemy RESTful API's to pull and analyze relevant data
+* The Rails back-end keeps a running average of data from the most recent articles and tracks the trajectory of the sentiment and emotional data
+* Individual company pages provide links to the most recently retreived articles for that company, as well as a link to the company's page at MarketWatch.com
 
 ## Code Guide
 
-If you'd like to take a closer look at the code behind the Cookbook App, the best folders to look in are:
+If you'd like to take a closer look at the code behind Stock Sentiment, the best folders to look in are:
 
-* [Cookbook.jsx](./frontend/Cookbook.jsx)
-* [React components](./frontend/components)
-  * [App](./frontend/components/app.jsx)
-* [Rails controllers](./app/controllers/api)
-* [Flux Stores](./frontend/stores)
-* [Api Util](./frontend/util/api_util.js)
-* [DB Schema](./db/schema.rb)
-* [Rails Routes](./config/routes.rb)
+* [API Services](./app/services)
+  * [Intrinio API](./app/services/intrinio_api.rb)
+  * [Alchemy API](./app/services/alchemy_api.rb)
+* [Helpers](./frontend/app/helpers)
+  * [Calculate Change](./frontend/app/helpers/calculate-change.js)
+  * [Is Positive](./frontend/app/helpers/is-positive.js)
+* [Models](./frontend/app/models)
+  * [Company](./frontend/app/models/company.js)
+  * [Article](./frontend/app/article.js)
+* [Templates](./frontend/app/templates)
+  * [Companies Index](./frontend/app/templates/companies.hbs)
+  * [Company Page](./frontend/app/templates/company.hbs)
 
 ## Languages, Frameworks, Libraries, Etc.
 
+* EmberJS
 * Ruby on Rails
 * PostgreSQL
-* React
-* Flux
-* jQuery
 * Gems
-  * Paperclip
-  * pg_search
-  * jwt
-  * Jbuilder
-  * BCrypt
-
-## Screenshots
-
-Home page:
-![home page](./screenshots/homepage.jpg)
-
-Recipe detail page:
-![recipe detail](./screenshots/recipe-detail.jpg)
-
-Recipe notes:
-![recipe detail](./screenshots/comments.jpg)
-
-Search bar:
-![search bar](./screenshots/search.jpg)
+  * friendly_id
+  * jbuilder
