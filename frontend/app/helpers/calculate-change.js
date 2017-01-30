@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-export function calculateChange(params/*, hash*/) {
+export function calculateChange(params) {
   let [prev, curr] = params;
   let diff = curr - prev;
 

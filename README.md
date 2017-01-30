@@ -9,8 +9,8 @@ Stock Sentiment is application designed to keep track of the current sentiment a
 ## Features
 
 * Daily rake tasks connect to the Intrinio and Alchemy RESTful API's to pull and analyze relevant data
-* The Rails back-end keeps a running average of data from the most recent articles and tracks the trajectory of the sentiment and emotional data
-* Individual company pages provide links to the most recently retreived articles for that company, as well as a link to the company's page at MarketWatch.com
+* The Rails back-end keeps a running average of the most recent sentiment and emotional data and tracks the trajectory as well
+* Individual company pages provide links for the most recently retreived articles for that company, as well as a link to the company's page at MarketWatch.com
 
 ## Code Guide
 
@@ -24,7 +24,7 @@ If you'd like to take a closer look at the code behind Stock Sentiment, the best
   * [Is Positive](./frontend/app/helpers/is-positive.js)
 * [Models](./frontend/app/models)
   * [Company](./frontend/app/models/company.js)
-  * [Article](./frontend/app/article.js)
+  * [Article](./frontend/app/models/article.js)
 * [Templates](./frontend/app/templates)
   * [Companies Index](./frontend/app/templates/companies.hbs)
   * [Company Page](./frontend/app/templates/company.hbs)
@@ -34,14 +34,18 @@ If you'd like to take a closer look at the code behind Stock Sentiment, the best
 * EmberJS
 * Ruby on Rails
 * PostgreSQL
+* Ember CLI Addons
+  * ember-font-awesome
+  * ember-cli-bourbon
+  * ember-cli-neat
 * Gems
   * friendly_id
   * jbuilder
 
 ## Future Implementations
 
-There are a number of features that I would like to add to the application:
+There are a number of features that I would like to add to the application in the future:
 
-* Search for specific stocks
-* Pagination with a load on scroll feature to improve load time
+* Search feature to locate specific stocks
+* Pagination with a load on scroll feature to improve initial load time
 * Sort and filter functionality to locate specific ranges of data
