@@ -39,6 +39,7 @@ class AlchemyAPI
       # skip if company with id doesn't exist
       begin
         company = Company.find(current_company_id)
+        puts "Analyzing articles for #{company.title}"
       rescue
         puts "Company with id #{current_company_id} doesn't exist, skipping"
         articles_analyzed = 20

@@ -1,28 +1,59 @@
-== README
+# New York Thyme's Cookbook
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+New York Thyme's Cookbook is a clone of [New York Times Cooking](http://www.cooking.nytimes.com) created by William McMeans. It features recipes that users can save to their recipe box, rate, comment on, and more. Take a look at it live at [http://www.thymes-cookbook.com](http://www.thymes-cookbook.com) — you can log in on an already registered account with one click using the demo button.
 
-Things you may want to cover:
+[Live Here][live]
 
-* Ruby version
+[live]: http://www.thymes-cookbook.com
 
-* System dependencies
+## Features
 
-* Configuration
+* Authentication
+  * Session is authenticated in the backend. All queries return data that corresponds to the proper user.
+  * User can log in from any page in the app. Clicking on a link to save a recipe, access recipe box, etc. prompt the user for log in (as on the original app).
+* Save recipes
+* Mark recipes as cooked
+* Comment on recipes
+* Find recipes by tag
+* Look at recipe boxes of other users
 
-* Database creation
+## Code Guide
 
-* Database initialization
+If you'd like to take a closer look at the code behind the Cookbook App, the best folders to look in are:
 
-* How to run the test suite
+* [Cookbook.jsx](./frontend/Cookbook.jsx)
+* [React components](./frontend/components)
+  * [App](./frontend/components/app.jsx)
+* [Rails controllers](./app/controllers/api)
+* [Flux Stores](./frontend/stores)
+* [Api Util](./frontend/util/api_util.js)
+* [DB Schema](./db/schema.rb)
+* [Rails Routes](./config/routes.rb)
 
-* Services (job queues, cache servers, search engines, etc.)
+## Languages, Frameworks, Libraries, Etc.
 
-* Deployment instructions
+* Ruby on Rails
+* PostgreSQL
+* React
+* Flux
+* jQuery
+* Gems
+  * Paperclip
+  * pg_search
+  * jwt
+  * Jbuilder
+  * BCrypt
 
-* ...
+## Screenshots
 
+Home page:
+![home page](./screenshots/homepage.jpg)
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Recipe detail page:
+![recipe detail](./screenshots/recipe-detail.jpg)
+
+Recipe notes:
+![recipe detail](./screenshots/comments.jpg)
+
+Search bar:
+![search bar](./screenshots/search.jpg)
