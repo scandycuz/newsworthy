@@ -9,8 +9,8 @@ Stock Sentiment is application designed to keep track of the current sentiment a
 ## Features
 
 * Daily rake tasks connect to the Intrinio and Alchemy RESTful API's to pull and analyze relevant data
-* The Rails back-end keeps a running average of the most recent sentiment and emotional data and tracks the trajectory as well
-* Individual company pages provide links for the most recently retreived articles for that company, as well as a link to the company's page at MarketWatch.com
+* The Rails back-end keeps a running average of the most recent sentiment and emotional data and tracks the trajectory
+* Individual company pages provide links for the most recently retreived articles, as well as a link to the company's page at MarketWatch.com
 
 ## Code Guide
 
@@ -44,8 +44,8 @@ If you'd like to take a closer look at the code behind Stock Sentiment, the best
 
 ## Future Implementations
 
-There are a number of features that I would like to add to the application:
+There are a number of features that I would like to add to the application in the future:
 
 * Search feature to locate specific stocks
 * Pagination with a load on scroll feature to improve initial load time
-* Sort and filter functionality to locate specific ranges of data
+* Sort and filter functionality
