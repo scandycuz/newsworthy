@@ -49,4 +49,4 @@ There are a number of features that I would like to add to the application in th
 * Search feature to locate specific stocks
 * Pagination with a load on scroll feature to improve initial load time
 * Sort and filter functionality
-* Graphs for each company using collected data-points depicting sentiment and emotional data over time
+* Graphs for each company using collected data-points to illustrate sentiment and emotional data over time
