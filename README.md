@@ -1,28 +1,61 @@
-== README
+# Stock Sentiment
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Stock Sentiment is app designed to keep track of the current sentiment and emotional reaction to companies listed on NASDAQ. It uses the [Intrinio]
 
-Things you may want to cover:
+New York Thyme's Cookbook is a clone of [New York Times Cooking](http://www.cooking.nytimes.com) created by William McMeans. It features recipes that users can save to their recipe box, rate, comment on, and more. Take a look at it live at [http://www.thymes-cookbook.com](http://www.thymes-cookbook.com) — you can log in on an already registered account with one click using the demo button.
 
-* Ruby version
+[Live Here][live]
 
-* System dependencies
+[live]: http://www.thymes-cookbook.com
 
-* Configuration
+## Features
 
-* Database creation
+* Authentication
+  * Session is authenticated in the backend. All queries return data that corresponds to the proper user.
+  * User can log in from any page in the app. Clicking on a link to save a recipe, access recipe box, etc. prompt the user for log in (as on the original app).
+* Save recipes
+* Mark recipes as cooked
+* Comment on recipes
+* Find recipes by tag
+* Look at recipe boxes of other users
 
-* Database initialization
+## Code Guide
 
-* How to run the test suite
+If you'd like to take a closer look at the code behind the Cookbook App, the best folders to look in are:
 
-* Services (job queues, cache servers, search engines, etc.)
+* [Cookbook.jsx](./frontend/Cookbook.jsx)
+* [React components](./frontend/components)
+  * [App](./frontend/components/app.jsx)
+* [Rails controllers](./app/controllers/api)
+* [Flux Stores](./frontend/stores)
+* [Api Util](./frontend/util/api_util.js)
+* [DB Schema](./db/schema.rb)
+* [Rails Routes](./config/routes.rb)
 
-* Deployment instructions
+## Languages, Frameworks, Libraries, Etc.
 
-* ...
+* Ruby on Rails
+* PostgreSQL
+* React
+* Flux
+* jQuery
+* Gems
+  * Paperclip
+  * pg_search
+  * jwt
+  * Jbuilder
+  * BCrypt
 
+## Screenshots
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Home page:
+![home page](./screenshots/homepage.jpg)
+
+Recipe detail page:
+![recipe detail](./screenshots/recipe-detail.jpg)
+
+Recipe notes:
+![recipe detail](./screenshots/comments.jpg)
+
+Search bar:
+![search bar](./screenshots/search.jpg)
