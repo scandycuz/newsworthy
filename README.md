@@ -2,7 +2,7 @@
 
 Stock Sentiment is application designed to keep track of the current sentiment and emotional reaction to companies listed on NASDAQ. It uses the [Intrinio](https://intrinio.com/) News API to pull recent news articles about each company, and IBM's Watson [Alchemy](http://www.alchemyapi.com/) API to analyze the sentiment and emotion in the articles. The application then records a running average of those values for each company and also tracks recent changes.
 
-[Live Here][live]
+[Stock Sentiment Live][live]
 
 [live]: http://www.stocksentiment.info/
 
