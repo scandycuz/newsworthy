@@ -37,3 +37,11 @@ If you'd like to take a closer look at the code behind Stock Sentiment, the best
 * Gems
   * friendly_id
   * jbuilder
+
+## Future Implementations
+
+There are a number of features that I would like to add to the application:
+
+* Search for specific stocks
+* Pagination with a load on scroll feature to improve load time
+* Sort and filter functionality to locate specific ranges of data
